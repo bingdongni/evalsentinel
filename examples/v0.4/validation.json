@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-13",
+  "timezone": "Asia/Shanghai",
+  "unit_tests": 258,
+  "line_coverage_percent": 90.36,
+  "ruff": true,
+  "format": true,
+  "ty": true,
+  "installed_wheel_sha256": "bc81f4ae2fad61ca5a1f302a27044499ecde9478adb05a9ee2a0e2a722ae38ed",
+  "model_api_calls": 0,
+  "gpu_required": false,
+  "scope": "Local Windows installed-wheel proof; GitHub run status is linked separately",
+  "redactions": [
+    "local checkout/output paths",
+    "Node executable path",
+    "installed module path"
+  ],
+  "report_manifest": [
+    {
+      "file": "healthy.service.json",
+      "original_report_sha256": "4b3c282ec299dd69d702b29acece52bbe393edd838ed009b1e75f6ee9c6bd526"
+    },
+    {
+      "file": "healthy.caching.json",
+      "original_report_sha256": "5ce31b54b577404445483e9daac8d2381e008065027bac5bc4d893b3059526f3"
+    },
+    {
+      "file": "missing-tool.service.json",
+      "original_report_sha256": "a0c757865aff3f8e91ecbfdb9190a4842befe8a5bb9245fb50d1c4a86fa41ab5"
+    },
+    {
+      "file": "paged.service.json",
+      "original_report_sha256": "405ed12ed562e417cbf803e46a2551bb7515a018a972638542709831f6581f7e"
+    },
+    {
+      "file": "cycle.service.json",
+      "original_report_sha256": "1001b88f4d315c43a06db6632b51b83cd87a9fe37daa26f32a863a2966e3b204"
+    },
+    {
+      "file": "wrong-query.functional.json",
+      "original_report_sha256": "e8335a92839a70887b0a72d88f9a8a0a68cc465a8ec3290a6168691fcbddd4ae"
+    }
+  ]
+}

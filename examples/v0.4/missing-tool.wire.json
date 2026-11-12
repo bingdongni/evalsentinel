@@ -1,0 +1,1421 @@
+[
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "delivered_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "tools/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "tools/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "tools": [
+          {
+            "name": "execute_sql",
+            "description": "Execute SQL queries on the sqlite database [READ-ONLY MODE]",
+            "inputSchema": {
+              "type": "object",
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "properties": {
+                "sql": {
+                  "type": "string",
+                  "description": "SQL to execute (multiple statements separated by ;)"
+                }
+              },
+              "required": [
+                "sql"
+              ]
+            },
+            "annotations": {
+              "title": "Execute SQL (sqlite)",
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": false,
+              "openWorldHint": false
+            }
+          }
+        ],
+        "resultType": "complete",
+        "ttlMs": 300000,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "delivered_response": {
+      "result": {
+        "tools": [],
+        "resultType": "complete",
+        "ttlMs": 300000,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "prompts/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "prompts/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "delivered_response": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "http_status": 404,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "resources/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "resources/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "delivered_response": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "http_status": 404,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "method": "resources/templates/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "method": "resources/templates/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "delivered_response": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "http_status": 404,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "delivered_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "delivered_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "tools/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "tools/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "tools": [
+          {
+            "name": "execute_sql",
+            "description": "Execute SQL queries on the sqlite database [READ-ONLY MODE]",
+            "inputSchema": {
+              "type": "object",
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "properties": {
+                "sql": {
+                  "type": "string",
+                  "description": "SQL to execute (multiple statements separated by ;)"
+                }
+              },
+              "required": [
+                "sql"
+              ]
+            },
+            "annotations": {
+              "title": "Execute SQL (sqlite)",
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": false,
+              "openWorldHint": false
+            }
+          }
+        ],
+        "resultType": "complete",
+        "ttlMs": 300000,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "delivered_response": {
+      "result": {
+        "tools": [],
+        "resultType": "complete",
+        "ttlMs": 300000,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "prompts/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "prompts/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "delivered_response": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "http_status": 404,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "resources/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "resources/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "delivered_response": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "http_status": 404,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "method": "resources/templates/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "method": "resources/templates/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "delivered_response": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    },
+    "http_status": 404,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "delivered_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "delivered_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "tools/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "tools/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "tools": [
+          {
+            "name": "execute_sql",
+            "description": "Execute SQL queries on the sqlite database [READ-ONLY MODE]",
+            "inputSchema": {
+              "type": "object",
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "properties": {
+                "sql": {
+                  "type": "string",
+                  "description": "SQL to execute (multiple statements separated by ;)"
+                }
+              },
+              "required": [
+                "sql"
+              ]
+            },
+            "annotations": {
+              "title": "Execute SQL (sqlite)",
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": false,
+              "openWorldHint": false
+            }
+          }
+        ],
+        "resultType": "complete",
+        "ttlMs": 300000,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 2
+    },
+    "delivered_response": {
+      "result": {
+        "tools": [],
+        "resultType": "complete",
+        "ttlMs": 300000,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 2
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "delivered_response": {
+      "result": {
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "private",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 1
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "tools/call",
+      "params": {
+        "name": "execute_sql",
+        "arguments": {
+          "sql": "SELECT name FROM sentinel_items ORDER BY id"
+        },
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "tools/call",
+      "params": {
+        "name": "execute_sql",
+        "arguments": {
+          "sql": "SELECT name FROM sentinel_items ORDER BY id"
+        },
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"success\": true,\n  \"data\": {\n    \"statements\": [\n      {\n        \"sql\": \"SELECT name FROM sentinel_items ORDER BY id\",\n        \"rows\": [\n          {\n            \"name\": \"alpha\"\n          },\n          {\n            \"name\": \"beta\"\n          }\n        ],\n        \"count\": 2\n      }\n    ],\n    \"source_id\": \"fixture\"\n  }\n}"
+          }
+        ],
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 2
+    },
+    "delivered_response": {
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"success\": true,\n  \"data\": {\n    \"statements\": [\n      {\n        \"sql\": \"SELECT name FROM sentinel_items ORDER BY id\",\n        \"rows\": [\n          {\n            \"name\": \"alpha\"\n          },\n          {\n            \"name\": \"beta\"\n          }\n        ],\n        \"count\": 2\n      }\n    ],\n    \"source_id\": \"fixture\"\n  }\n}"
+          }
+        ],
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 2
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "tools/call",
+      "params": {
+        "name": "execute_sql",
+        "arguments": {
+          "sql": "SELECT nonexistent FROM sentinel_items"
+        },
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_request": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "tools/call",
+      "params": {
+        "name": "execute_sql",
+        "arguments": {
+          "sql": "SELECT nonexistent FROM sentinel_items"
+        },
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "upstream_response": {
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"success\": false,\n  \"error\": \"no such column: nonexistent\",\n  \"code\": \"EXECUTION_ERROR\"\n}"
+          }
+        ],
+        "isError": true,
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 3
+    },
+    "delivered_response": {
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"success\": false,\n  \"error\": \"no such column: nonexistent\",\n  \"code\": \"EXECUTION_ERROR\"\n}"
+          }
+        ],
+        "isError": true,
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "DBHub MCP Server",
+            "version": "1.6.1"
+          }
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 3
+    },
+    "http_status": 200,
+    "mode": "hide-tool"
+  }
+]

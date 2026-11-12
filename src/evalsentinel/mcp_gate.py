@@ -79,7 +79,7 @@ def validate_checks(raw: object) -> list[dict[str, Any]]:
     return raw
 
 
-def _declared(discovery: object) -> dict[str, Any]:
+def declared_capabilities(discovery: object) -> dict[str, Any]:
     if not isinstance(discovery, dict):
         raise TypeError("Native discovery result is not an object")
     caps = discovery.get("capabilities")
@@ -123,7 +123,7 @@ def assess(
     if contract in {PRODUCTION, SDK}:
         if ids != CACHING_IDS:
             raise ValueError("Caching check set changed or is incomplete; review compatibility")
-        caps = _declared(discovery)
+        caps = declared_capabilities(discovery)
         required_ids = CACHING_IDS if contract == SDK else CACHING_IDS - {READ}
     elif contract == COVERAGE:
         if not required or any(not item or item.startswith("wire-") for item in required):
@@ -197,7 +197,7 @@ def assess(
     }
 
 
-def _base(contract: str) -> dict:
+def new_report(contract: str) -> dict:
     return {
         "schema": "evalsentinel.mcp-check.v1",
         "evalsentinel_version": __version__,
@@ -211,7 +211,7 @@ def _base(contract: str) -> dict:
     }
 
 
-def _error(report: dict, error: Exception) -> None:
+def record_error(report: dict, error: Exception) -> None:
     report["gate"] = {
         "status": "error",
         "exit_code": 2,
@@ -220,7 +220,7 @@ def _error(report: dict, error: Exception) -> None:
 
 
 def check_report(checks_file: Path, output: Path, *, required: list[str]) -> dict:
-    report = _base(COVERAGE)
+    report = new_report(COVERAGE)
     output.mkdir(parents=True, exist_ok=False)
     try:
         payload = checks_file.read_bytes()
@@ -234,7 +234,7 @@ def check_report(checks_file: Path, output: Path, *, required: list[str]) -> dic
         report["native_checks"] = json.loads(payload)
         report.update(assess(report["native_checks"], contract=COVERAGE, required=required))
     except (OSError, ValueError, TypeError) as error:
-        _error(report, error)
+        record_error(report, error)
     report["passed"] = report["gate"]["exit_code"] == 0
     write_report(output, report)
     return report
@@ -277,7 +277,7 @@ def target_provenance(checkout: Path, expected_commit: str) -> dict:
     }
 
 
-def _validate_url(url: str) -> None:
+def validate_url(url: str) -> None:
     parsed = urlsplit(url)
     host = parsed.hostname
     try:
@@ -328,7 +328,7 @@ def _discover(checkout: Path, output: Path, node: str, url: str, timeout: float)
     checks = validate_checks(payload.get("checks"))
     if len(checks) != 1 or checks[0]["status"] != "SUCCESS":
         raise ValueError("Native discovery wire validation failed")
-    _declared(payload.get("discovery"))
+    declared_capabilities(payload.get("discovery"))
     return payload
 
 
@@ -350,11 +350,11 @@ def check(  # noqa: PLR0913
         raise ValueError("Select production-caching-v1 or sdk-caching-v1")
     if not 1 <= timeout <= MAX_TIMEOUT:
         raise ValueError("Native timeout must be between 1 and 60 seconds")
-    _validate_url(url)
+    validate_url(url)
     checkout, output = checkout.resolve(), output.resolve()
     source = target_provenance(checkout, expected_commit)
     output.mkdir(parents=True, exist_ok=False)
-    report = {**_base(contract), "source": source, "spec_version": SPEC_VERSION, "url": url}
+    report = {**new_report(contract), "source": source, "spec_version": SPEC_VERSION, "url": url}
     try:
         before = _discover(checkout, output / "discovery-before.json", source["node"], url, timeout)
         command = [
@@ -382,7 +382,7 @@ def check(  # noqa: PLR0913
         report["native_checks_path"] = str(paths[0].relative_to(output))
         after = _discover(checkout, output / "discovery-after.json", source["node"], url, timeout)
         _require(
-            _declared(before["discovery"]) == _declared(after["discovery"]),
+            declared_capabilities(before["discovery"]) == declared_capabilities(after["discovery"]),
             "Capability declarations changed during execution",
         )
         report["discovery"] = {"before": before, "after": after}
@@ -398,7 +398,7 @@ def check(  # noqa: PLR0913
         )
         report.update(assessed)
     except (OSError, ValueError, TypeError) as error:
-        _error(report, error)
+        record_error(report, error)
     try:
         after_source = target_provenance(checkout, expected_commit)
         _require(
@@ -408,7 +408,7 @@ def check(  # noqa: PLR0913
         report["source"]["verified_after_run"] = True
     except (OSError, ValueError) as error:
         report["source"]["verified_after_run"] = False
-        _error(report, error)
+        record_error(report, error)
     report["passed"] = report["gate"]["exit_code"] == 0
     write_report(output, report)
     return report

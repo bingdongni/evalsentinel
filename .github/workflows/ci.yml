@@ -65,8 +65,8 @@ jobs:
       - name: Verify maintainer-commit gating and real native fault controls
         run: |
           uv build --offline
-          uv run --isolated --no-project --python 3.12 --with dist/evalsentinel-0.3.0a1-py3-none-any.whl python -m evalsentinel --version
-          uv run --offline --isolated --no-project --python 3.12 --with dist/evalsentinel-0.3.0a1-py3-none-any.whl python tools/verify_maintainer_gate.py --checkout .cache/owasp-fixed --output-dir runs/maintainer-ci
+          uv run --isolated --no-project --python 3.12 --with dist/evalsentinel-0.4.0a1-py3-none-any.whl python -m evalsentinel --version
+          uv run --offline --isolated --no-project --python 3.12 --with dist/evalsentinel-0.4.0a1-py3-none-any.whl python tools/verify_maintainer_gate.py --checkout .cache/owasp-fixed --output-dir runs/maintainer-ci
 
   mcp-production:
     needs: quality
@@ -95,14 +95,61 @@ jobs:
           npm ci --prefix .cache/conformance-production --ignore-scripts --no-audit --no-fund
           npm run --prefix .cache/conformance-production build
           uv build
-          uv run --isolated --no-project --python 3.12 --with dist/evalsentinel-0.3.0a1-py3-none-any.whl python -m evalsentinel --version
+          uv run --isolated --no-project --python 3.12 --with dist/evalsentinel-0.4.0a1-py3-none-any.whl python -m evalsentinel --version
       - name: Verify installed-wheel positive, negative and all-skipped controls offline
-        run: uv run --offline --isolated --no-project --python 3.12 --with dist/evalsentinel-0.3.0a1-py3-none-any.whl python tools/verify_mcp_gate.py --require-installed --checkout .cache/conformance-production --output-dir runs/mcp-production-ci
+        run: uv run --offline --isolated --no-project --python 3.12 --with dist/evalsentinel-0.4.0a1-py3-none-any.whl python tools/verify_mcp_gate.py --require-installed --checkout .cache/conformance-production --output-dir runs/mcp-production-ci
       - name: Retain synthetic native evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: mcp-production-${{ matrix.os }}
           path: runs/mcp-production-ci
+          if-no-files-found: warn
+          retention-days: 3
+
+  real-service:
+    needs: quality
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.1"
+          python-version: "3.12"
+          enable-cache: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+      - name: Prepare the original conformance source
+        run: |
+          uv sync --locked --no-dev
+          uv run --no-dev python tools/prepare_native.py --adapter mcp-production
+      - name: Build the original conformance runner
+        working-directory: .cache/conformance-production
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build
+      - name: Install the locked official DBHub release with SQLite only
+        working-directory: integrations/dbhub
+        run: npm ci --ignore-scripts --omit=optional --no-audit --no-fund
+      - name: Prepare the isolated installed wheel
+        run: |
+          uv build
+          uv run --isolated --no-project --python 3.12 --with dist/evalsentinel-0.4.0a1-py3-none-any.whl python -m evalsentinel --version
+      - name: Verify real service, positive controls, injected faults and remaining blind spots
+        run: uv run --offline --isolated --no-project --python 3.12 --with dist/evalsentinel-0.4.0a1-py3-none-any.whl python tools/verify_real_mcp.py --require-installed --checkout .cache/conformance-production --runtime integrations/dbhub --output-dir runs/real-service-ci
+      - name: Retain synthetic real-service evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: real-service-${{ matrix.os }}
+          path: runs/real-service-ci
           if-no-files-found: warn
           retention-days: 3

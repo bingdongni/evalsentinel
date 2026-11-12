@@ -1,0 +1,71 @@
+{
+  "discovery": {
+    "supportedVersions": [
+      "2026-07-28"
+    ],
+    "capabilities": {
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "resultType": "complete",
+    "ttlMs": 0,
+    "cacheScope": "private",
+    "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+        "name": "DBHub MCP Server",
+        "version": "1.6.1"
+      }
+    }
+  },
+  "good": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\": true, \"data\": {\"statements\": [{\"sql\": \"SELECT name FROM sentinel_items ORDER BY id\", \"rows\": [{\"name\": \"incorrect\"}], \"count\": 2}], \"source_id\": \"fixture\"}}"
+      }
+    ],
+    "resultType": "complete",
+    "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+        "name": "DBHub MCP Server",
+        "version": "1.6.1"
+      }
+    }
+  },
+  "bad": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": false,\n  \"error\": \"no such column: nonexistent\",\n  \"code\": \"EXECUTION_ERROR\"\n}"
+      }
+    ],
+    "isError": true,
+    "resultType": "complete",
+    "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+        "name": "DBHub MCP Server",
+        "version": "1.6.1"
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "wire-schema-valid",
+      "name": "WireSchemaValid",
+      "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+      "status": "SUCCESS",
+      "timestamp": "2026-11-12T18:06:22.778Z",
+      "specReferences": [
+        {
+          "id": "MCP-Schema",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+        }
+      ],
+      "details": {
+        "messagesValidated": 6,
+        "violations": []
+      }
+    }
+  ]
+}

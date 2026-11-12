@@ -1,0 +1,9 @@
+{
+  "name": "evalsentinel-dbhub-integration",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pinned upstream DBHub release for local SQLite integration controls",
+  "dependencies": {
+    "@bytebase/dbhub": "1.6.1"
+  }
+}

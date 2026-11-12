@@ -7,7 +7,7 @@ from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 
-from evalsentinel import __version__, gate, mcp_gate, owasp, suite
+from evalsentinel import __version__, gate, mcp_gate, mcp_service, owasp, suite
 from evalsentinel.catalog import CONTROLS, VERSIONS
 from evalsentinel.mcp import audit
 from evalsentinel.owasp_catalog import REVISIONS, corpus
@@ -57,7 +57,31 @@ def _execute(args: argparse.Namespace, output: Path) -> dict:
     )
 
 
+def _check_mcp(args: argparse.Namespace, output: Path) -> dict:
+    if not args.url:
+        raise ValueError("MCP caching checks require a loopback --url")
+    if args.contract == mcp_service.CONTRACT:
+        return mcp_service.check(
+            args.checkout.resolve(),
+            output.resolve(),
+            args.expected_commit,
+            url=args.url,
+            required=args.require_tool or [],
+            timeout=args.timeout_seconds,
+        )
+    return mcp_gate.check(
+        args.checkout.resolve(),
+        output.resolve(),
+        args.expected_commit,
+        url=args.url,
+        contract=args.contract,
+        timeout=args.timeout_seconds,
+    )
+
+
 def _execute_check(args: argparse.Namespace, output: Path) -> dict:
+    if args.require_tool and (args.adapter != "mcp" or args.contract != mcp_service.CONTRACT):
+        raise ValueError("--require-tool applies to service-tools-v1 only")
     if args.adapter == "mcp-report":
         if args.contract != mcp_gate.COVERAGE or not args.checks_file:
             raise ValueError("mcp-report needs --checks-file and semantic-coverage-v1")
@@ -71,16 +95,7 @@ def _execute_check(args: argparse.Namespace, output: Path) -> dict:
     if args.checks_file or args.require_check:
         raise ValueError("--checks-file and --require-check apply to mcp-report only")
     if args.adapter == "mcp":
-        if not args.url:
-            raise ValueError("MCP caching checks require a loopback --url")
-        return mcp_gate.check(
-            args.checkout.resolve(),
-            output.resolve(),
-            args.expected_commit,
-            url=args.url,
-            contract=args.contract,
-            timeout=args.timeout_seconds,
-        )
+        return _check_mcp(args, output)
     if args.url:
         raise ValueError("--url applies to MCP caching only")
     return gate.check(
@@ -108,7 +123,13 @@ def _check(args: argparse.Namespace, output: Path) -> int:
             )
         )
     else:
-        summary = gate.console_summary if args.adapter == "owasp" else mcp_gate.console_summary
+        summary = (
+            gate.console_summary
+            if args.adapter == "owasp"
+            else mcp_service.console_summary
+            if args.contract == mcp_service.CONTRACT
+            else mcp_gate.console_summary
+        )
         print(summary(report, output))
     return report["gate"]["exit_code"]
 
@@ -125,7 +146,13 @@ def main(argv: list[str] | None = None) -> int:
     check.add_argument("--expected-commit", help="Full 40-hex target Git commit")
     check.add_argument(
         "--contract",
-        choices=[gate.CONTRACT, mcp_gate.PRODUCTION, mcp_gate.SDK, mcp_gate.COVERAGE],
+        choices=[
+            gate.CONTRACT,
+            mcp_gate.PRODUCTION,
+            mcp_gate.SDK,
+            mcp_gate.COVERAGE,
+            mcp_service.CONTRACT,
+        ],
         required=True,
     )
     check.add_argument(
@@ -134,6 +161,9 @@ def main(argv: list[str] | None = None) -> int:
     check.add_argument("--checks-file", type=Path, help="Fresh native checks.json for mcp-report")
     check.add_argument(
         "--require-check", action="append", help="Required semantic check ID; repeatable"
+    )
+    check.add_argument(
+        "--require-tool", action="append", help="Required service tool name; repeatable"
     )
     check.add_argument("--output-dir", type=Path)
     check.add_argument("--timeout-seconds", type=float, default=25)
