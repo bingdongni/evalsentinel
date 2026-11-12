@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contribution guide
+    url: https://github.com/bingdongni/evalsentinel/blob/main/CONTRIBUTING.md
+    about: Sources, controls, evidence boundaries and local validation commands.

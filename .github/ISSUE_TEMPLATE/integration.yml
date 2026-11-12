@@ -1,0 +1,23 @@
+name: Integration need or regression proposal
+description: Tell us which native evaluator or contract you need
+title: "[Integration] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What native evaluator and workflow need coverage?
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Contract and observable evidence
+      description: Link native sources; describe good/bad controls and what the trace cannot establish.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Reproduction and resource constraints
+      description: Prefer offline CPU-only examples using invented data and no credentials.

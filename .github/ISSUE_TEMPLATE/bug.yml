@@ -1,0 +1,26 @@
+name: Reproducible failure
+description: Report an unexpected native result or adapter behavior
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and native pin
+      description: EvalSentinel version, OS, Python, Node if used, and complete native commit.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Exact command, invented-data fixture, original result, and declared expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and policy source
+      description: Link the relevant requirement and sanitized native result. Never include credentials or private traces.
+    validations:
+      required: true

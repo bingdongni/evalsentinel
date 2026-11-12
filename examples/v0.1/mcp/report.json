@@ -1,0 +1,2239 @@
+{
+  "schema": "evalsentinel.audit.v1",
+  "evalsentinel_version": "0.1.0",
+  "adapter": "mcp-pagination",
+  "created_at": "2026-11-12T06:13:06.626950+00:00",
+  "source": {
+    "adapter": "mcp",
+    "repository": "https://github.com/modelcontextprotocol/conformance",
+    "commit": "c69c46dbef3083ab4e87b06a6b0e066cc487e214",
+    "checkout": "<native-mcp>",
+    "artifact_sha256": {
+      "dist/index.js": "0b1e40bdfa19459791611092877c02c3395792654edef5003846fa59016df6e0",
+      "package-lock.json": "e9d0405b0fbc905c962af951382780743a28dffa6ce9999eb9ec5cc86b28b348"
+    },
+    "node": "<node>",
+    "node_version": "v22.14.0",
+    "scenario_source": "https://github.com/modelcontextprotocol/conformance/pull/583",
+    "spec_reference": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination"
+  },
+  "declared_rows": 16,
+  "results": [
+    {
+      "adapter": "mcp",
+      "control": "good",
+      "spec_version": "2025-11-25",
+      "polarity": "good",
+      "rationale": "Preserve both cursors, complete the traversal, then call the last-page tool.",
+      "focus_check": null,
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "SUCCESS",
+        "pagination-tool-discovered": "SUCCESS",
+        "pagination-stops-at-end": "SUCCESS"
+      },
+      "expected_exit": 0,
+      "classification": "correct_accept",
+      "expectation_met": true,
+      "reason": "Positive control accepted",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2025-11-25",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/everything-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2025-11-25-good\\native"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "checks_path": "2025-11-25-good\\native\\client-pagination-2026-11-12T06-12-37-553Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:39.057Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:39.057Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": 2,
+            "unknownCursors": []
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client calls add_numbers after discovering the last page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:39.057Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:39.057Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:39.057Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 10,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "truthy-cursor",
+      "spec_version": "2025-11-25",
+      "polarity": "bad",
+      "rationale": "An empty-string cursor is valid; truthiness stops the traversal too early.",
+      "focus_check": "pagination-empty-cursor",
+      "expected_native_checks": {
+        "pagination-empty-cursor": "FAILURE",
+        "pagination-opaque-cursor": "FAILURE",
+        "pagination-tool-discovered": "FAILURE",
+        "pagination-stops-at-end": "WARNING"
+      },
+      "expected_exit": 1,
+      "classification": "correct_reject",
+      "expectation_met": true,
+      "reason": "The exercised target check rejected the known defect",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2025-11-25",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2025-11-25-truthy-cursor\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2025-11-25-truthy-cursor\\native\\client-pagination-2026-11-12T06-12-39-996Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:40.887Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "errorMessage": "Client did not continue the listing with cursor: \"\"",
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": -1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor from the second page",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:40.887Z",
+          "errorMessage": "Not testable: Client never requested the page that advertises the opaque cursor",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client never requested the page that advertises the opaque cursor"
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client completes the scenario by calling the last-page tool",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:40.887Z",
+          "errorMessage": "Not testable: No valid add_numbers call followed the complete pagination traversal",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "No valid add_numbers call followed the complete pagination traversal"
+          }
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "WARNING",
+          "timestamp": "2026-11-12T06:12:40.887Z",
+          "errorMessage": "Not testable: Client did not complete the requested traversal and tool call",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client did not complete the requested traversal and tool call"
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:40.887Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 4,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "trim-cursor",
+      "spec_version": "2025-11-25",
+      "polarity": "bad",
+      "rationale": "Trimming the advertised cursor changes an opaque value.",
+      "focus_check": "pagination-opaque-cursor",
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "FAILURE",
+        "pagination-tool-discovered": "FAILURE",
+        "pagination-stops-at-end": "WARNING"
+      },
+      "expected_exit": 1,
+      "classification": "correct_reject",
+      "expectation_met": true,
+      "reason": "The exercised target check rejected the known defect",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2025-11-25",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2025-11-25-trim-cursor\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2025-11-25-trim-cursor\\native\\client-pagination-2026-11-12T06-12-41-811Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:42.687Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:42.687Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "errorMessage": "Client did not preserve the opaque cursor from the empty second page",
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": -1,
+            "unknownCursors": [
+              "0+/%\u96ea?="
+            ]
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client completes the scenario by calling the last-page tool",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:42.687Z",
+          "errorMessage": "Not testable: No valid add_numbers call followed the complete pagination traversal",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "No valid add_numbers call followed the complete pagination traversal"
+          }
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "WARNING",
+          "timestamp": "2026-11-12T06:12:42.687Z",
+          "errorMessage": "Not testable: Client did not complete the requested traversal and tool call",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client did not complete the requested traversal and tool call"
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:42.687Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 7,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "recover-trim",
+      "spec_version": "2025-11-25",
+      "polarity": "bad",
+      "rationale": "A successful retry does not erase the preceding cursor modification.",
+      "focus_check": "pagination-opaque-cursor",
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "FAILURE",
+        "pagination-tool-discovered": "SUCCESS",
+        "pagination-stops-at-end": "SUCCESS"
+      },
+      "expected_exit": 1,
+      "classification": "correct_reject",
+      "expectation_met": true,
+      "reason": "The exercised target check rejected the known defect",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2025-11-25",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2025-11-25-recover-trim\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2025-11-25-recover-trim\\native\\client-pagination-2026-11-12T06-12-43-610Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:44.460Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:44.460Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "errorMessage": "Client did not preserve the opaque cursor from the empty second page",
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": 3,
+            "unknownCursors": [
+              "0+/%\u96ea?="
+            ]
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client calls add_numbers after discovering the last page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:44.460Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:44.460Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:44.460Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 11,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "empty-page",
+      "spec_version": "2025-11-25",
+      "polarity": "bad",
+      "rationale": "An empty page with a continuation cursor is not the end of results.",
+      "focus_check": "pagination-opaque-cursor",
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "FAILURE",
+        "pagination-tool-discovered": "FAILURE",
+        "pagination-stops-at-end": "WARNING"
+      },
+      "expected_exit": 1,
+      "classification": "correct_reject",
+      "expectation_met": true,
+      "reason": "The exercised target check rejected the known defect",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2025-11-25",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2025-11-25-empty-page\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2025-11-25-empty-page\\native\\client-pagination-2026-11-12T06-12-45-390Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:46.258Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:46.258Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "errorMessage": "Client did not preserve the opaque cursor from the empty second page",
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": -1,
+            "unknownCursors": []
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client completes the scenario by calling the last-page tool",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:46.259Z",
+          "errorMessage": "Not testable: No valid add_numbers call followed the complete pagination traversal",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "No valid add_numbers call followed the complete pagination traversal"
+          }
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "WARNING",
+          "timestamp": "2026-11-12T06:12:46.259Z",
+          "errorMessage": "Not testable: Client did not complete the requested traversal and tool call",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client did not complete the requested traversal and tool call"
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:46.259Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 6,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "past-end",
+      "spec_version": "2025-11-25",
+      "polarity": "bad",
+      "rationale": "The same traversal continues after its terminal page; SHOULD maps to WARNING.",
+      "focus_check": "pagination-stops-at-end",
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "SUCCESS",
+        "pagination-tool-discovered": "SUCCESS",
+        "pagination-stops-at-end": "WARNING"
+      },
+      "expected_exit": 1,
+      "classification": "correct_reject",
+      "expectation_met": true,
+      "reason": "The exercised target check rejected the known defect",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2025-11-25",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2025-11-25-past-end\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2025-11-25-past-end\\native\\client-pagination-2026-11-12T06-12-47-182Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:48.058Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:48.058Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": 2,
+            "unknownCursors": []
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client calls add_numbers after discovering the last page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:48.058Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "WARNING",
+          "timestamp": "2026-11-12T06:12:48.058Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "errorMessage": "Client requested another page after nextCursor was absent, before completing the traversal task"
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:48.058Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 12,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "inert",
+      "spec_version": "2025-11-25",
+      "polarity": "not_run",
+      "rationale": "No requests: unexercised checks must remain visible and cannot count as catches.",
+      "focus_check": null,
+      "expected_native_checks": {
+        "pagination-empty-cursor": "FAILURE",
+        "pagination-opaque-cursor": "FAILURE",
+        "pagination-tool-discovered": "FAILURE",
+        "pagination-stops-at-end": "WARNING"
+      },
+      "expected_exit": 1,
+      "classification": "not_run",
+      "expectation_met": true,
+      "reason": "Deliberate inert control; never counted as a catch",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2025-11-25",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2025-11-25-inert\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2025-11-25-inert\\native\\client-pagination-2026-11-12T06-12-48-993Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:49.632Z",
+          "errorMessage": "Not testable: Client never requested the initial tools/list page",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client never requested the initial tools/list page"
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor from the second page",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:49.633Z",
+          "errorMessage": "Not testable: Client never requested the page that advertises the opaque cursor",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client never requested the page that advertises the opaque cursor"
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client completes the scenario by calling the last-page tool",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:49.633Z",
+          "errorMessage": "Not testable: No valid add_numbers call followed the complete pagination traversal",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "No valid add_numbers call followed the complete pagination traversal"
+          }
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "WARNING",
+          "timestamp": "2026-11-12T06:12:49.633Z",
+          "errorMessage": "Not testable: Client did not complete the requested traversal and tool call",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client did not complete the requested traversal and tool call"
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "rediscover",
+      "spec_version": "2025-11-25",
+      "polarity": "good",
+      "rationale": "A fresh discovery after completing the task is a legitimate positive control.",
+      "focus_check": null,
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "SUCCESS",
+        "pagination-tool-discovered": "SUCCESS",
+        "pagination-stops-at-end": "SUCCESS"
+      },
+      "expected_exit": 0,
+      "classification": "correct_accept",
+      "expectation_met": true,
+      "reason": "Positive control accepted",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2025-11-25",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2025-11-25-rediscover\\native"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "checks_path": "2025-11-25-rediscover\\native\\client-pagination-2026-11-12T06-12-50-558Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:51.414Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:51.414Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": 2,
+            "unknownCursors": []
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client calls add_numbers after discovering the last page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:51.414Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:51.414Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:51.414Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 12,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "good",
+      "spec_version": "2026-07-28",
+      "polarity": "good",
+      "rationale": "Preserve both cursors, complete the traversal, then call the last-page tool.",
+      "focus_check": null,
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "SUCCESS",
+        "pagination-tool-discovered": "SUCCESS",
+        "pagination-stops-at-end": "SUCCESS"
+      },
+      "expected_exit": 0,
+      "classification": "correct_accept",
+      "expectation_met": true,
+      "reason": "Positive control accepted",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2026-07-28",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/everything-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2026-07-28-good\\native"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "checks_path": "2026-07-28-good\\native\\client-pagination-2026-11-12T06-12-52-352Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:53.475Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:53.475Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": 2,
+            "unknownCursors": []
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client calls add_numbers after discovering the last page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:53.475Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:53.475Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:53.475Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 8,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "truthy-cursor",
+      "spec_version": "2026-07-28",
+      "polarity": "bad",
+      "rationale": "An empty-string cursor is valid; truthiness stops the traversal too early.",
+      "focus_check": "pagination-empty-cursor",
+      "expected_native_checks": {
+        "pagination-empty-cursor": "FAILURE",
+        "pagination-opaque-cursor": "FAILURE",
+        "pagination-tool-discovered": "FAILURE",
+        "pagination-stops-at-end": "WARNING"
+      },
+      "expected_exit": 1,
+      "classification": "correct_reject",
+      "expectation_met": true,
+      "reason": "The exercised target check rejected the known defect",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2026-07-28",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2026-07-28-truthy-cursor\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2026-07-28-truthy-cursor\\native\\client-pagination-2026-11-12T06-12-54-467Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:55.318Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "errorMessage": "Client did not continue the listing with cursor: \"\"",
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": -1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor from the second page",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:55.318Z",
+          "errorMessage": "Not testable: Client never requested the page that advertises the opaque cursor",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client never requested the page that advertises the opaque cursor"
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client completes the scenario by calling the last-page tool",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:55.318Z",
+          "errorMessage": "Not testable: No valid add_numbers call followed the complete pagination traversal",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "No valid add_numbers call followed the complete pagination traversal"
+          }
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "WARNING",
+          "timestamp": "2026-11-12T06:12:55.318Z",
+          "errorMessage": "Not testable: Client did not complete the requested traversal and tool call",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client did not complete the requested traversal and tool call"
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:55.318Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 2,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "trim-cursor",
+      "spec_version": "2026-07-28",
+      "polarity": "bad",
+      "rationale": "Trimming the advertised cursor changes an opaque value.",
+      "focus_check": "pagination-opaque-cursor",
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "FAILURE",
+        "pagination-tool-discovered": "FAILURE",
+        "pagination-stops-at-end": "WARNING"
+      },
+      "expected_exit": 1,
+      "classification": "correct_reject",
+      "expectation_met": true,
+      "reason": "The exercised target check rejected the known defect",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2026-07-28",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2026-07-28-trim-cursor\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2026-07-28-trim-cursor\\native\\client-pagination-2026-11-12T06-12-56-384Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:57.312Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:57.312Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "errorMessage": "Client did not preserve the opaque cursor from the empty second page",
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": -1,
+            "unknownCursors": [
+              "0+/%\u96ea?="
+            ]
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client completes the scenario by calling the last-page tool",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:57.313Z",
+          "errorMessage": "Not testable: No valid add_numbers call followed the complete pagination traversal",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "No valid add_numbers call followed the complete pagination traversal"
+          }
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "WARNING",
+          "timestamp": "2026-11-12T06:12:57.313Z",
+          "errorMessage": "Not testable: Client did not complete the requested traversal and tool call",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client did not complete the requested traversal and tool call"
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:57.313Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 6,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "recover-trim",
+      "spec_version": "2026-07-28",
+      "polarity": "bad",
+      "rationale": "A successful retry does not erase the preceding cursor modification.",
+      "focus_check": "pagination-opaque-cursor",
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "FAILURE",
+        "pagination-tool-discovered": "SUCCESS",
+        "pagination-stops-at-end": "SUCCESS"
+      },
+      "expected_exit": 1,
+      "classification": "correct_reject",
+      "expectation_met": true,
+      "reason": "The exercised target check rejected the known defect",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2026-07-28",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2026-07-28-recover-trim\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2026-07-28-recover-trim\\native\\client-pagination-2026-11-12T06-12-58-363Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:59.265Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:12:59.265Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "errorMessage": "Client did not preserve the opaque cursor from the empty second page",
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": 3,
+            "unknownCursors": [
+              "0+/%\u96ea?="
+            ]
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client calls add_numbers after discovering the last page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:59.265Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:59.265Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:12:59.266Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 10,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "empty-page",
+      "spec_version": "2026-07-28",
+      "polarity": "bad",
+      "rationale": "An empty page with a continuation cursor is not the end of results.",
+      "focus_check": "pagination-opaque-cursor",
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "FAILURE",
+        "pagination-tool-discovered": "FAILURE",
+        "pagination-stops-at-end": "WARNING"
+      },
+      "expected_exit": 1,
+      "classification": "correct_reject",
+      "expectation_met": true,
+      "reason": "The exercised target check rejected the known defect",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2026-07-28",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2026-07-28-empty-page\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2026-07-28-empty-page\\native\\client-pagination-2026-11-12T06-13-00-349Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:01.231Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:13:01.231Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "errorMessage": "Client did not preserve the opaque cursor from the empty second page",
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": -1,
+            "unknownCursors": []
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client completes the scenario by calling the last-page tool",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:13:01.231Z",
+          "errorMessage": "Not testable: No valid add_numbers call followed the complete pagination traversal",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "No valid add_numbers call followed the complete pagination traversal"
+          }
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "WARNING",
+          "timestamp": "2026-11-12T06:13:01.231Z",
+          "errorMessage": "Not testable: Client did not complete the requested traversal and tool call",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client did not complete the requested traversal and tool call"
+          }
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:01.231Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 4,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "past-end",
+      "spec_version": "2026-07-28",
+      "polarity": "bad",
+      "rationale": "The same traversal continues after its terminal page; SHOULD maps to WARNING.",
+      "focus_check": "pagination-stops-at-end",
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "SUCCESS",
+        "pagination-tool-discovered": "SUCCESS",
+        "pagination-stops-at-end": "WARNING"
+      },
+      "expected_exit": 1,
+      "classification": "correct_reject",
+      "expectation_met": true,
+      "reason": "The exercised target check rejected the known defect",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2026-07-28",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2026-07-28-past-end\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2026-07-28-past-end\\native\\client-pagination-2026-11-12T06-13-02-311Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:03.223Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:03.223Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": 2,
+            "unknownCursors": []
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client calls add_numbers after discovering the last page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:03.223Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "WARNING",
+          "timestamp": "2026-11-12T06:13:03.223Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "errorMessage": "Client requested another page after nextCursor was absent, before completing the traversal task"
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:03.224Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 10,
+            "violations": []
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "inert",
+      "spec_version": "2026-07-28",
+      "polarity": "not_run",
+      "rationale": "No requests: unexercised checks must remain visible and cannot count as catches.",
+      "focus_check": null,
+      "expected_native_checks": {
+        "pagination-empty-cursor": "FAILURE",
+        "pagination-opaque-cursor": "FAILURE",
+        "pagination-tool-discovered": "FAILURE",
+        "pagination-stops-at-end": "WARNING"
+      },
+      "expected_exit": 1,
+      "classification": "not_run",
+      "expectation_met": true,
+      "reason": "Deliberate inert control; never counted as a catch",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2026-07-28",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2026-07-28-inert\\native"
+      ],
+      "exit_code": 1,
+      "timed_out": false,
+      "checks_path": "2026-07-28-inert\\native\\client-pagination-2026-11-12T06-13-04-135Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:13:04.771Z",
+          "errorMessage": "Not testable: Client never requested the initial tools/list page",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client never requested the initial tools/list page"
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor from the second page",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:13:04.771Z",
+          "errorMessage": "Not testable: Client never requested the page that advertises the opaque cursor",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client never requested the page that advertises the opaque cursor"
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client completes the scenario by calling the last-page tool",
+          "status": "FAILURE",
+          "timestamp": "2026-11-12T06:13:04.771Z",
+          "errorMessage": "Not testable: No valid add_numbers call followed the complete pagination traversal",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "No valid add_numbers call followed the complete pagination traversal"
+          }
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "WARNING",
+          "timestamp": "2026-11-12T06:13:04.772Z",
+          "errorMessage": "Not testable: Client did not complete the requested traversal and tool call",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "untestable": true,
+            "reason": "Client did not complete the requested traversal and tool call"
+          }
+        }
+      ]
+    },
+    {
+      "adapter": "mcp",
+      "control": "rediscover",
+      "spec_version": "2026-07-28",
+      "polarity": "good",
+      "rationale": "A fresh discovery after completing the task is a legitimate positive control.",
+      "focus_check": null,
+      "expected_native_checks": {
+        "pagination-empty-cursor": "SUCCESS",
+        "pagination-opaque-cursor": "SUCCESS",
+        "pagination-tool-discovered": "SUCCESS",
+        "pagination-stops-at-end": "SUCCESS"
+      },
+      "expected_exit": 0,
+      "classification": "correct_accept",
+      "expectation_met": true,
+      "reason": "Positive control accepted",
+      "native_started": true,
+      "command": [
+        "<node>",
+        "dist/index.js",
+        "client",
+        "--scenario",
+        "client-pagination",
+        "--spec-version",
+        "2026-07-28",
+        "--timeout",
+        "10000",
+        "--command",
+        "\"<node>\" --import tsx examples/clients/typescript/pagination-broken-client.ts",
+        "-o",
+        "<evalsentinel>\\runs\\v0.1-full-native\\mcp\\2026-07-28-rediscover\\native"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "checks_path": "2026-07-28-rediscover\\native\\client-pagination-2026-11-12T06-13-05-699Z\\checks.json",
+      "native_checks": [
+        {
+          "id": "pagination-empty-cursor",
+          "name": "PaginationEmptyCursor",
+          "description": "Client continues with the empty-string nextCursor",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:06.579Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "firstRequest": 0,
+            "emptyCursorRequest": 1
+          }
+        },
+        {
+          "id": "pagination-opaque-cursor",
+          "name": "PaginationOpaqueCursor",
+          "description": "Client preserves the opaque cursor and continues past an empty page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:06.579Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ],
+          "details": {
+            "emptyCursorRequest": 1,
+            "terminalPageRequest": 2,
+            "unknownCursors": []
+          }
+        },
+        {
+          "id": "pagination-tool-discovered",
+          "name": "PaginationToolDiscovered",
+          "description": "Client calls add_numbers after discovering the last page",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:06.579Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "pagination-stops-at-end",
+          "name": "PaginationStopsAtEnd",
+          "description": "Client treats an absent nextCursor as the end of this traversal (SHOULD)",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:06.579Z",
+          "specReferences": [
+            {
+              "id": "MCP-Pagination",
+              "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/pagination#implementation-guidelines"
+            },
+            {
+              "id": "MCP-Pagination-Empty-Cursor",
+              "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination#implementation-guidelines"
+            }
+          ]
+        },
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T06:13:06.579Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 10,
+            "violations": []
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "declared_rows": 16,
+    "observed_rows": 16,
+    "complete": true,
+    "independent_controls": 8,
+    "native_runs": 16,
+    "classifications": {
+      "correct_accept": 4,
+      "correct_reject": 10,
+      "not_run": 2
+    },
+    "expectations_matched": 16,
+    "expectations_met": true
+  },
+  "model_api_calls": 0,
+  "gpu_required": false,
+  "complete": true,
+  "expectations_met": true,
+  "recorded_example": {
+    "redacted": "Local filesystem and executable path prefixes only; native verdicts unchanged",
+    "original_sha256": "a02491fac84ba76ad5215c825a8e08613eae7b28146cfdb683af14443b6e4c98"
+  }
+}

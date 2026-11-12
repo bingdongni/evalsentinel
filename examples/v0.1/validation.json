@@ -1,0 +1,24 @@
+{
+  "version": "0.1.0",
+  "unit_tests_passed": 130,
+  "line_coverage_percent": 90.91,
+  "native_unique_controls": 30,
+  "native_observation_rows": 60,
+  "strict_exit_codes": {
+    "baseline": 1,
+    "candidate": 0
+  },
+  "model_api_calls": 0,
+  "ruff": "passed",
+  "ty": "passed",
+  "wheel_build": "passed",
+  "isolated_wheel_controls": 30,
+  "mutation": {
+    "mutation": "Invert the target-check false-accept condition",
+    "exit_code": 1,
+    "killed": true,
+    "original_sha256": "769dc7cedb28edec070ba15753fb06faac476d22e938af64234ff12bf3eabfa8",
+    "restored_sha256": "769dc7cedb28edec070ba15753fb06faac476d22e938af64234ff12bf3eabfa8",
+    "bytecode_cache_cleared": true
+  }
+}
