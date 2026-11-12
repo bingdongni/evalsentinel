@@ -2,8 +2,8 @@
   "name": "EvalSentinel",
   "selected_on": "2026-11-12",
   "decision": "selected",
-  "implementation_status": "first runnable MCP alpha 0.1.0a1; full two-adapter v0.1 not delivered",
-  "positioning_zh": "有状态智能体评测器的离线反例测试工具",
+  "implementation_status": "v0.1.0 implementation: two native adapters and 30 named regression controls",
+  "positioning_zh": "\u6709\u72b6\u6001\u667a\u80fd\u4f53\u8bc4\u6d4b\u5668\u7684\u79bb\u7ebf\u53cd\u4f8b\u6d4b\u8bd5\u5de5\u5177",
   "repository_directory": "D:/PR/evalsentinel",
   "public_repository_created": true,
   "default_budget": {
@@ -26,11 +26,12 @@
       "OWASP/Agent-Security-Regression-Harness native assertions"
     ],
     "planned_known_answer_cases_minimum": 30,
-    "case_count_is_not_yet_delivered": true,
+    "case_count_is_not_yet_delivered": false,
     "language": "Python 3.12+ control layer, Node for the native MCP toolchain",
     "full_agent_runner": false,
     "model_judge": false,
-    "arbitrary_external_side_effect_validation": false
+    "arbitrary_external_side_effect_validation": false,
+    "delivered_known_answer_cases": 30
   },
   "observed_evidence": {
     "mcp_pr": "https://github.com/modelcontextprotocol/conformance/pull/583",
@@ -39,13 +40,15 @@
     "mcp_cli_control_runs": 16,
     "mcp_full_test_count": 659,
     "mcp_runs_include_protocol_version_repetitions": true,
-    "owasp_native_cases": 8,
+    "owasp_native_cases": 22,
     "owasp_commit": "970158c10b7e36ae00f12de4ba2a41ca61acabca",
     "owasp_probe": "evidence/owasp-native-probe.json",
     "owasp_known_issue": "https://github.com/OWASP/Agent-Security-Regression-Harness/issues/210",
     "owasp_existing_fix": "https://github.com/OWASP/Agent-Security-Regression-Harness/pull/211",
     "owasp_new_discovery_claim": false,
-    "owasp_terminal_state_snapshot_contract": "not present in reviewed native Trace model"
+    "owasp_terminal_state_snapshot_contract": "not present in reviewed native Trace model",
+    "owasp_candidate_commit": "4af47abb5d31b3cd46867b121d89ce316ab81b42",
+    "full_matrix_observation_rows": 60
   },
   "prior_work": [
     {
@@ -107,16 +110,17 @@
   ],
   "fast_falsification": "Run the same stateful cases through existing evalmut interfaces and native upstream tests; compare coverage, false flags and adapter effort",
   "delivered_slice": {
-    "version": "0.1.0a1",
-    "integration": "native MCP CLI",
-    "independent_controls": 8,
-    "protocol_versions": [
-      "2025-11-25",
-      "2026-07-28"
+    "version": "0.1.0",
+    "integrations": [
+      "MCP native CLI",
+      "isolated OWASP native assertion"
     ],
-    "observed_native_runs": 16,
-    "model_api_calls": 0
+    "independent_controls": 30,
+    "observation_rows": 60,
+    "model_api_calls": 0,
+    "baseline_false_accepts": 6,
+    "candidate_false_accepts": 0
   },
-  "next_delivery": "Native OWASP package integration and the full attributed v0.1 corpus",
+  "next_delivery": "External user feedback and further independently sourced regression families",
   "public_repository_url": "https://github.com/bingdongni/evalsentinel"
 }

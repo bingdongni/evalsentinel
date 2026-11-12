@@ -9,8 +9,17 @@ from evalsentinel import __version__, cli
 def test_cases_lists_the_declared_controls(capsys) -> None:
     assert cli.main(["cases"]) == 0
     cases = json.loads(capsys.readouterr().out)
-    assert len(cases) == 8
-    assert {case["polarity"] for case in cases} == {"good", "bad", "not_run"}
+    assert len(cases) == 30
+    assert {case["polarity"] for case in cases} == {
+        "good",
+        "bad",
+        "not_run",
+        "unsupported",
+        "invalid",
+    }
+    assert len({case["id"] for case in cases}) == 30
+    assert len(cli.inventory("mcp")) == 8
+    assert len(cli.inventory("owasp")) == 22
 
 
 def test_version(capsys) -> None:

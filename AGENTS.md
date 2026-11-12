@@ -2,8 +2,9 @@
 
 The project direction was selected on 2026-11-12. Read
 `decisions/001-project-selection.md` and `decisions/project.json` before changing
-the scope. The repository now contains the first runnable MCP alpha, plus a native
-OWASP feasibility probe. The full two-adapter, 30-case v0.1 target is not delivered.
+the scope. Version 0.1 contains the MCP and isolated OWASP native adapters and
+30 named controls. Version/revision repetitions form 60 observation rows, not
+60 independent cases. The baseline's six known policy gaps remain false accepts.
 
 - Keep the default workflow CPU-only and free of model API calls. Installing
   explicitly declared dependencies is separate from executing offline tests.
