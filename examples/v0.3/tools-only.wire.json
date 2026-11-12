@@ -1,0 +1,230 @@
+[
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "public",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "evalsentinel-fixture",
+            "version": "1"
+          }
+        },
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {}
+        }
+      }
+    }
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "tools/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "public",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "evalsentinel-fixture",
+            "version": "1"
+          }
+        },
+        "tools": [
+          {
+            "name": "echo",
+            "description": "No-op test tool",
+            "inputSchema": {
+              "type": "object"
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "prompts/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    }
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "resources/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    }
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "method": "resources/templates/list",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    }
+  },
+  {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "conformance-test-client",
+            "version": "1.0.0"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {
+            "sampling": {},
+            "elicitation": {},
+            "roots": {
+              "listChanged": true
+            }
+          }
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "public",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "evalsentinel-fixture",
+            "version": "1"
+          }
+        },
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {}
+        }
+      }
+    }
+  }
+]

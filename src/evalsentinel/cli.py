@@ -7,7 +7,7 @@ from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 
-from evalsentinel import __version__, gate, owasp, suite
+from evalsentinel import __version__, gate, mcp_gate, owasp, suite
 from evalsentinel.catalog import CONTROLS, VERSIONS
 from evalsentinel.mcp import audit
 from evalsentinel.owasp_catalog import REVISIONS, corpus
@@ -57,16 +57,45 @@ def _execute(args: argparse.Namespace, output: Path) -> dict:
     )
 
 
-def _check(args: argparse.Namespace, output: Path) -> int:
-    try:
-        report = gate.check(
+def _execute_check(args: argparse.Namespace, output: Path) -> dict:
+    if args.adapter == "mcp-report":
+        if args.contract != mcp_gate.COVERAGE or not args.checks_file:
+            raise ValueError("mcp-report needs --checks-file and semantic-coverage-v1")
+        if args.checkout or args.expected_commit or args.url:
+            raise ValueError("mcp-report consumes an artifact; native execution flags do not apply")
+        return mcp_gate.check_report(
+            args.checks_file, output.resolve(), required=args.require_check or []
+        )
+    if not args.checkout or not args.expected_commit:
+        raise ValueError("Native checks require --checkout and --expected-commit")
+    if args.checks_file or args.require_check:
+        raise ValueError("--checks-file and --require-check apply to mcp-report only")
+    if args.adapter == "mcp":
+        if not args.url:
+            raise ValueError("MCP caching checks require a loopback --url")
+        return mcp_gate.check(
             args.checkout.resolve(),
             output.resolve(),
             args.expected_commit,
+            url=args.url,
             contract=args.contract,
             timeout=args.timeout_seconds,
         )
-    except (OSError, ValueError) as error:
+    if args.url:
+        raise ValueError("--url applies to MCP caching only")
+    return gate.check(
+        args.checkout.resolve(),
+        output.resolve(),
+        args.expected_commit,
+        contract=args.contract,
+        timeout=args.timeout_seconds,
+    )
+
+
+def _check(args: argparse.Namespace, output: Path) -> int:
+    try:
+        report = _execute_check(args, output)
+    except (OSError, ValueError, TypeError) as error:
         print(
             json.dumps({"error": {"code": "INVALID_ENVIRONMENT", "message": str(error)}}),
             file=sys.stderr,
@@ -79,7 +108,8 @@ def _check(args: argparse.Namespace, output: Path) -> int:
             )
         )
     else:
-        print(gate.console_summary(report, output))
+        summary = gate.console_summary if args.adapter == "owasp" else mcp_gate.console_summary
+        print(summary(report, output))
     return report["gate"]["exit_code"]
 
 
@@ -90,10 +120,21 @@ def main(argv: list[str] | None = None) -> int:
     cases = commands.add_parser("cases", help="List the 30 declared controls as JSON")
     cases.add_argument("--adapter", choices=["all", "mcp", "owasp"], default="all")
     check = commands.add_parser("check", help="Gate a maintainer-selected native commit")
-    check.add_argument("adapter", choices=["owasp"])
-    check.add_argument("--checkout", type=Path, required=True)
-    check.add_argument("--expected-commit", required=True, help="Full 40-hex target Git commit")
-    check.add_argument("--contract", choices=[gate.CONTRACT], required=True)
+    check.add_argument("adapter", choices=["owasp", "mcp", "mcp-report"])
+    check.add_argument("--checkout", type=Path)
+    check.add_argument("--expected-commit", help="Full 40-hex target Git commit")
+    check.add_argument(
+        "--contract",
+        choices=[gate.CONTRACT, mcp_gate.PRODUCTION, mcp_gate.SDK, mcp_gate.COVERAGE],
+        required=True,
+    )
+    check.add_argument(
+        "--url", help="Loopback MCP server URL (caching may read its first resource)"
+    )
+    check.add_argument("--checks-file", type=Path, help="Fresh native checks.json for mcp-report")
+    check.add_argument(
+        "--require-check", action="append", help="Required semantic check ID; repeatable"
+    )
     check.add_argument("--output-dir", type=Path)
     check.add_argument("--timeout-seconds", type=float, default=25)
     check.add_argument("--format", choices=["text", "json"], default="text")

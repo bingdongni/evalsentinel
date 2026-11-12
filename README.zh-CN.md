@@ -9,7 +9,23 @@ API key，不运行真实转账、删除等动作。
 无需本地安装也可试用：[在自己的 fork 中运行原生演示](docs/try-it.md)，然后
 [提交简短试用反馈](https://github.com/bingdongni/evalsentinel/issues/new?template=trial-feedback.yml)。
 
-## v0.2 alpha：检查自己的评测器提交
+## v0.3 alpha：MCP 生产检查和执行覆盖门禁
+
+对已启动的本地 MCP 2026-07-28 服务，运行原样的上游 caching CLI，再按明确声明的
+生产策略判断适用性。只声明 tools 的服务不会因为缺少 prompts/resources 而误报；
+声明了能力却返回错误仍会阻断。原生判定、退出码和检查 ID 完整保留。
+
+```sh
+evalsentinel check mcp --checkout /path/to/conformance --expected-commit FULL_40_HEX_SHA --url http://127.0.0.1:8765/mcp --contract production-caching-v1 --output-dir /path/to/new-report
+```
+
+**0** 表示有限检查范围通过，**1** 表示范围内违反，**2** 表示不可判定或执行错误。
+wire 成功不计入语义覆盖率；全跳过不能变成语义通过。空资源列表保留
+`resources/read: not_run`。也可用 `check mcp-report` 为已有原生报告指定必测检查 ID，
+无需再跑服务。详见[准备、原生对照和 CI 接入](docs/mcp-production-gate.md)。
+这轮复现已公开的 #516，不重复上游已有贡献，也不代表完整 MCP 认证。
+
+## v0.2+：检查自己的 OWASP 评测器提交
 
 OWASP 断言维护者可以指定当前 PR 的完整提交号与单次审批策略，直接接入 CI：
 

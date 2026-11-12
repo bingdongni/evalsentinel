@@ -1,0 +1,401 @@
+{
+  "schema": "evalsentinel.mcp-check.v1",
+  "evalsentinel_version": "0.3.0a1",
+  "created_at": "2026-11-12T09:11:35.561700+00:00",
+  "adapter": "mcp",
+  "contract": {
+    "id": "sdk-caching-v1"
+  },
+  "model_api_calls": 0,
+  "gpu_required": false,
+  "passed": false,
+  "gate": {
+    "status": "inconclusive",
+    "exit_code": 2,
+    "violations": [],
+    "missing_required_checks": [],
+    "unexercised_required_checks": [
+      "sep-2549-resources-read-caching-hints"
+    ],
+    "diagnostics": []
+  },
+  "source": {
+    "kind": "user-selected-git-checkout",
+    "commit": "96a6f9478b7f2e125cf0360a213383cf57533893",
+    "checkout": "<native-checkout>",
+    "artifact_sha256": {
+      "src/index.ts": "3c2cc1206437cebf970322c891866a50322487c8624cfabb198a61722ebbc8f1",
+      "src/runner/server.ts": "24cf8c2274cd6900c5af43be57c7ac33f26064ae6bd9ce19d465e9a353c64fd9",
+      "src/scenarios/server/caching.ts": "d88bcd60c71bcb5b966af8d7cbdf7d8d2929efa82d7936c5f0124d47b2ce5086",
+      "src/connection/index.ts": "87baf5c50c7edd9b5683996e2400d033e68d884ea0639fcb28f351272400d186",
+      "src/connection/select.ts": "20a0bff672d26592533708311d343906069a9cc17fc42a3419eec77e91510ff1",
+      "src/connection/stateless.ts": "73bdcd2bd225ac93d70af02725c7382d1ddbd29f9d077b21cbc89f8fdf50fec4",
+      "src/validation/wire-schema.ts": "64779996a9b8927e3648f2fd52fed3ba7d2c6a4e1de790a1bc0f5995017e8165",
+      "package.json": "4ae4ff57332d4cc1ed631b70e57d549b8c529dbf22f75b234e446bc6a2811bde",
+      "package-lock.json": "e9d0405b0fbc905c962af951382780743a28dffa6ce9999eb9ec5cc86b28b348",
+      "dist/index.js": "d01e35eec3395f0e848e46b9e6d909e2ebdd3f3f5c0860721990da04318e8bac",
+      "node_modules/tsx/dist/cli.mjs": "8729ecfb90d9d568939e4190e6f1d3317c946583b7d37a776e0c23a21c021cf8"
+    },
+    "node": "node",
+    "tracked_tree_clean": true,
+    "trust": "Trusted native build and dependencies; hashes are not build attestation",
+    "verified_after_run": true
+  },
+  "spec_version": "2026-07-28",
+  "url": "http://127.0.0.1:57784/mcp",
+  "native_execution": {
+    "command": [
+      "node",
+      "<native-checkout>\\dist\\index.js",
+      "server",
+      "--url",
+      "http://127.0.0.1:57784/mcp",
+      "--scenario",
+      "caching",
+      "--spec-version",
+      "2026-07-28",
+      "--timeout",
+      "25000",
+      "--output-dir",
+      "<run-output>\\native"
+    ],
+    "exit_code": 0
+  },
+  "native_checks": [
+    {
+      "id": "sep-2549-tools-list-caching-hints",
+      "name": "ToolsListCachingHints",
+      "description": "tools/list response includes ttlMs and cacheScope caching hints",
+      "status": "SUCCESS",
+      "timestamp": "2026-11-12T09:11:37.376Z",
+      "specReferences": [
+        {
+          "id": "MCP-Caching",
+          "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+        },
+        {
+          "id": "SEP-2549",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+        }
+      ],
+      "details": {
+        "ttlMs": 0,
+        "cacheScope": "public",
+        "hasTtlMs": true,
+        "hasCacheScope": true
+      }
+    },
+    {
+      "id": "sep-2549-prompts-list-caching-hints",
+      "name": "PromptsListCachingHints",
+      "description": "prompts/list response includes ttlMs and cacheScope caching hints",
+      "status": "SUCCESS",
+      "timestamp": "2026-11-12T09:11:37.386Z",
+      "specReferences": [
+        {
+          "id": "MCP-Caching",
+          "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+        },
+        {
+          "id": "SEP-2549",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+        }
+      ],
+      "details": {
+        "ttlMs": 0,
+        "cacheScope": "public",
+        "hasTtlMs": true,
+        "hasCacheScope": true
+      }
+    },
+    {
+      "id": "sep-2549-resources-list-caching-hints",
+      "name": "ResourcesListCachingHints",
+      "description": "resources/list response includes ttlMs and cacheScope caching hints",
+      "status": "SUCCESS",
+      "timestamp": "2026-11-12T09:11:37.396Z",
+      "specReferences": [
+        {
+          "id": "MCP-Caching",
+          "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+        },
+        {
+          "id": "SEP-2549",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+        }
+      ],
+      "details": {
+        "ttlMs": 0,
+        "cacheScope": "public",
+        "hasTtlMs": true,
+        "hasCacheScope": true
+      }
+    },
+    {
+      "id": "sep-2549-resources-templates-list-caching-hints",
+      "name": "ResourcesTemplatesListCachingHints",
+      "description": "resources/templates/list response includes ttlMs and cacheScope caching hints",
+      "status": "SUCCESS",
+      "timestamp": "2026-11-12T09:11:37.404Z",
+      "specReferences": [
+        {
+          "id": "MCP-Caching",
+          "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+        },
+        {
+          "id": "SEP-2549",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+        }
+      ],
+      "details": {
+        "ttlMs": 0,
+        "cacheScope": "public",
+        "hasTtlMs": true,
+        "hasCacheScope": true
+      }
+    },
+    {
+      "id": "sep-2549-resources-read-caching-hints",
+      "name": "ResourcesReadCachingHints",
+      "description": "resources/read response includes ttlMs and cacheScope caching hints",
+      "status": "SKIPPED",
+      "timestamp": "2026-11-12T09:11:37.404Z",
+      "errorMessage": "resources/read was not exercised: resources/list failed or returned no resources.",
+      "specReferences": [
+        {
+          "id": "MCP-Caching",
+          "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+        },
+        {
+          "id": "SEP-2549",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+        }
+      ]
+    },
+    {
+      "id": "sep-2549-ttl-non-negative",
+      "name": "TtlNonNegative",
+      "description": "All ttlMs values are non-negative integers",
+      "status": "SUCCESS",
+      "timestamp": "2026-11-12T09:11:37.404Z",
+      "specReferences": [
+        {
+          "id": "MCP-Caching",
+          "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+        },
+        {
+          "id": "SEP-2549",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+        }
+      ],
+      "details": {
+        "endpoints": [
+          {
+            "endpoint": "tools/list",
+            "ttlMs": 0
+          },
+          {
+            "endpoint": "prompts/list",
+            "ttlMs": 0
+          },
+          {
+            "endpoint": "resources/list",
+            "ttlMs": 0
+          },
+          {
+            "endpoint": "resources/templates/list",
+            "ttlMs": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "sep-2549-cache-scope-valid",
+      "name": "CacheScopeValid",
+      "description": "All cacheScope values are \"public\" or \"private\"",
+      "status": "SUCCESS",
+      "timestamp": "2026-11-12T09:11:37.404Z",
+      "specReferences": [
+        {
+          "id": "MCP-Caching",
+          "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+        },
+        {
+          "id": "SEP-2549",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+        }
+      ],
+      "details": {
+        "endpoints": [
+          {
+            "endpoint": "tools/list",
+            "cacheScope": "public"
+          },
+          {
+            "endpoint": "prompts/list",
+            "cacheScope": "public"
+          },
+          {
+            "endpoint": "resources/list",
+            "cacheScope": "public"
+          },
+          {
+            "endpoint": "resources/templates/list",
+            "cacheScope": "public"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wire-schema-valid",
+      "name": "WireSchemaValid",
+      "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+      "status": "SUCCESS",
+      "timestamp": "2026-11-12T09:11:37.404Z",
+      "specReferences": [
+        {
+          "id": "MCP-Schema",
+          "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+        }
+      ],
+      "details": {
+        "messagesValidated": 8,
+        "violations": []
+      }
+    }
+  ],
+  "native_checks_sha256": "7bcff02b0830b8066abeedf6ad85e9a34e823ad68e28ab5b13c30d02e0d539bf",
+  "native_checks_path": "native\\server-caching-2026-11-12T09-11-37-263Z\\checks.json",
+  "discovery": {
+    "before": {
+      "discovery": {
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "public",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "evalsentinel-fixture",
+            "version": "1"
+          }
+        },
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {},
+          "prompts": {},
+          "resources": {}
+        }
+      },
+      "checks": [
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T09:11:36.358Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 2,
+            "violations": []
+          }
+        }
+      ]
+    },
+    "after": {
+      "discovery": {
+        "resultType": "complete",
+        "ttlMs": 0,
+        "cacheScope": "public",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "evalsentinel-fixture",
+            "version": "1"
+          }
+        },
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {
+          "tools": {},
+          "prompts": {},
+          "resources": {}
+        }
+      },
+      "checks": [
+        {
+          "id": "wire-schema-valid",
+          "name": "WireSchemaValid",
+          "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+          "status": "SUCCESS",
+          "timestamp": "2026-11-12T09:11:38.307Z",
+          "specReferences": [
+            {
+              "id": "MCP-Schema",
+              "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+            }
+          ],
+          "details": {
+            "messagesValidated": 2,
+            "violations": []
+          }
+        }
+      ]
+    }
+  },
+  "coverage": {
+    "semantic_checks": 7,
+    "in_scope": 7,
+    "passed": 6,
+    "failed": 0,
+    "not_run": 1,
+    "not_applicable": 0,
+    "wire_checks_excluded_from_semantic_denominator": 1
+  },
+  "results": [
+    {
+      "check_id": "sep-2549-tools-list-caching-hints",
+      "classification": "passed",
+      "reason": "Original native status in selected scope"
+    },
+    {
+      "check_id": "sep-2549-prompts-list-caching-hints",
+      "classification": "passed",
+      "reason": "Original native status in selected scope"
+    },
+    {
+      "check_id": "sep-2549-resources-list-caching-hints",
+      "classification": "passed",
+      "reason": "Original native status in selected scope"
+    },
+    {
+      "check_id": "sep-2549-resources-templates-list-caching-hints",
+      "classification": "passed",
+      "reason": "Original native status in selected scope"
+    },
+    {
+      "check_id": "sep-2549-resources-read-caching-hints",
+      "classification": "not_run",
+      "reason": "Original native status in selected scope"
+    },
+    {
+      "check_id": "sep-2549-ttl-non-negative",
+      "classification": "passed",
+      "reason": "Original native status in selected scope"
+    },
+    {
+      "check_id": "sep-2549-cache-scope-valid",
+      "classification": "passed",
+      "reason": "Original native status in selected scope"
+    }
+  ],
+  "native_status_counts": {
+    "SUCCESS": 7,
+    "SKIPPED": 1
+  }
+}

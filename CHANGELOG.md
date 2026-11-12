@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0a1 — 2026-11-12
+
+- Added explicit production/strict caching profiles over the unchanged native
+  MCP 2026-07-28 CLI, with native discovery, scope and coverage preserved apart
+  from original verdicts. This reproduces the known #516 behavior.
+- Added `check mcp-report` with caller-required semantic check IDs. Wire-only,
+  all-skipped or missing required evidence cannot pass.
+- Added eight caching fixture modes, eleven profile observations, native
+  all-skipped/exercised artifact controls, installed-wheel Windows/Linux CI,
+  and integration instructions. No model API calls or GPU are required.
+
 ## 0.2.0a1 — 2026-11-12
 
 - Added a maintainer-selected OWASP commit gate for the explicit

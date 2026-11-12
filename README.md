@@ -12,7 +12,26 @@ GPU or real tool action is needed. [简体中文](README.zh-CN.md)
 **Try without a local install:** [run the native demo in your fork](docs/try-it.md)
 and [share a short trial report](https://github.com/bingdongni/evalsentinel/issues/new?template=trial-feedback.yml).
 
-## Check your own evaluator commit in CI (v0.2 alpha)
+## Gate MCP production coverage in CI (v0.3 alpha)
+
+For a local MCP 2026-07-28 test server, run the **unchanged native caching CLI**
+and an explicit capability-aware policy. Undeclared optional endpoints do not
+create production false alarms; declared broken endpoints still block. Native
+verdicts remain intact. Wire-only or all-skipped evidence cannot earn a semantic
+pass. Existing native reports can instead require named checks without a rerun.
+
+```sh
+evalsentinel check mcp --checkout /path/to/conformance --expected-commit FULL_40_HEX_SHA --url http://127.0.0.1:8765/mcp --contract production-caching-v1 --output-dir /path/to/new-report
+```
+
+Exit **0** passes the finite profile, **1** blocks on an in-scope violation, and
+**2** means inconclusive evidence or an execution/source error. Empty resource
+lists retain `resources/read: not_run`; this profile is not full MCP certification.
+[Preparation, complete controls and CI integration](docs/mcp-production-gate.md).
+This reproduces known upstream #516 behavior and complements work already in
+progress there; it does not claim a new upstream defect.
+
+## Check your OWASP evaluator commit in CI (v0.2+)
 
 An OWASP assertion maintainer can select a clean PR commit and the explicit
 single-use approval policy, then block a regression before merging:
