@@ -1,0 +1,51 @@
+{
+  "sources": [
+    {
+      "repo": "egnaro9/evalmut",
+      "commit": "bc1f770336386e3957579eddd5e79dc386daced7",
+      "license": "MIT",
+      "checkedAt": "2026-11-12T03:26:17.870Z",
+      "readFiles": [
+        "README.md",
+        "evalmut/case.py",
+        "evalmut/outcome.py"
+      ],
+      "url": "https://github.com/egnaro9/evalmut"
+    },
+    {
+      "repo": "OWASP/Agent-Security-Regression-Harness",
+      "commit": "970158c10b7e36ae00f12de4ba2a41ca61acabca",
+      "license": "Apache-2.0",
+      "checkedAt": "2026-11-12T03:26:20.408Z",
+      "readFiles": [
+        "README.md",
+        "src/agent_harness/trace.py",
+        "src/agent_harness/assertions.py",
+        "src/agent_harness/scenario.py",
+        "src/agent_harness/result.py",
+        "src/agent_harness/__init__.py"
+      ],
+      "url": "https://github.com/OWASP/Agent-Security-Regression-Harness"
+    },
+    {
+      "repo": "TraceLite-AI/TraceTrial-Bench",
+      "commit": "98a381307184fa4212db3466b21b4c92a031940b",
+      "license": "MIT",
+      "checkedAt": "2026-11-12T03:26:21.925Z",
+      "readFiles": [
+        "README.md"
+      ],
+      "url": "https://github.com/TraceLite-AI/TraceTrial-Bench"
+    }
+  ],
+  "papers": [
+    {
+      "url": "https://arxiv.org/abs/2610.16067v2",
+      "readScope": "abstract"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.07675v1",
+      "readScope": "abstract"
+    }
+  ]
+}

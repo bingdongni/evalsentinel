@@ -1,0 +1,11 @@
+.cache/
+.venv/
+node_modules/
+__pycache__/
+runs/
+*.log
+decisions/evidence/*.txt
+decisions/evidence/*.json
+!decisions/evidence/owasp-native-probe.json
+!decisions/evidence/upstream-pins.json
+!decisions/evidence/name-evalsentinel.json
