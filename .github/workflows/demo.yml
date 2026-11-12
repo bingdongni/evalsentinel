@@ -1,0 +1,80 @@
+name: Native demo (no model API)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.1"
+          python-version: "3.12"
+          enable-cache: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+      - name: Prepare pinned native sources and dependencies
+        run: |
+          uv sync --locked --no-dev
+          uv run --no-dev python tools/prepare_native.py --adapter all
+          npm ci --prefix .cache/conformance --ignore-scripts --no-audit --no-fund
+          npm run --prefix .cache/conformance build
+      - name: Run the complete native matrix without model calls
+        run: uv run --offline --no-dev evalsentinel audit all --mcp-checkout .cache/conformance --owasp-baseline .cache/owasp-harness --owasp-candidate .cache/owasp-fixed --output-dir runs/native-demo
+      - name: Verify real negative and positive strict-mode exits
+        run: uv run --offline --no-dev python tools/verify_native_suite.py runs/native-demo/report.json
+      - name: Show the verified result
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path("runs/native-demo")
+          verified = json.loads((root / "verification.json").read_text())
+          report = json.loads((root / "report.json").read_text())
+          baseline = report["sources"]["baseline"]["summary"]["classifications"]
+          candidate = report["sources"]["candidate"]["summary"]["classifications"]
+          rows = [
+              "# Native evaluator demo",
+              "",
+              "| Measured result | Value |",
+              "| --- | ---: |",
+              f"| Independent controls | {verified['unique_controls']} |",
+              f"| Version/revision observations | {verified['observation_rows']} |",
+              f"| Model API calls | {verified['model_api_calls']} |",
+              f"| OWASP baseline false accepts | {baseline.get('false_accept', 0)} |",
+              f"| OWASP candidate false accepts | {candidate.get('false_accept', 0)} |",
+              f"| OWASP good controls accepted (baseline / candidate) | {baseline.get('correct_accept', 0)} / {candidate.get('correct_accept', 0)} |",
+              f"| Actual strict CLI exits (baseline / candidate) | {verified['strict_exit_codes']['baseline']} / {verified['strict_exit_codes']['candidate']} |",
+              "",
+              "The baseline's six known policy counterexamples remain false accepts. "
+              "Default characterization success does not certify that baseline as sound. "
+              "Unsupported evidence, unexercised actions and errors are kept distinct.",
+              "",
+              "Download `native-demo-reports` below for original verdicts and source pins. "
+              "See `docs/try-it.md` to share a reproducible trial report.",
+          ]
+          with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a", encoding="utf-8") as stream:
+              stream.write("\n".join(rows) + "\n")
+          PY
+      - name: Retain the report, including a partial report if execution failed
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: native-demo-reports
+          path: |
+            runs/native-demo/report.json
+            runs/native-demo/verification.json
+            runs/native-demo/partial-report.json
+          if-no-files-found: warn
+          retention-days: 3

@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Added an opt-in GitHub Actions native demo, reproducible trial instructions and
+  a short feedback form. The demo retains its JSON reports for three days and
+  makes no model API calls.
+
 ## 0.1.0 — 2026-11-12
 
 - Added an isolated OWASP native adapter for the baseline and existing approval
