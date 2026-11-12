@@ -56,4 +56,4 @@ jobs:
           npm run --prefix .cache/conformance build
           uv sync --locked --no-dev
       - name: Run the two-version native control matrix without model calls
-        run: uv run --offline evalsentinel audit mcp --checkout .cache/conformance --output-dir runs/native-ci
+        run: uv run --offline --no-dev evalsentinel audit mcp --checkout .cache/conformance --output-dir runs/native-ci
