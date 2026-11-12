@@ -13,7 +13,7 @@ from pathlib import Path
 from evalsentinel import __version__
 from evalsentinel.catalog import CHECK_IDS, CONTROLS, MCP_PIN, SPEC, VERSIONS, Control
 from evalsentinel.process import run_process
-from evalsentinel.report import Comparison, compare, summarize
+from evalsentinel.report import Comparison, compare, summarize, write_report
 
 MIN_TIMEOUT = 15
 MAX_TIMEOUT = 60
@@ -52,6 +52,7 @@ def provenance(checkout: Path) -> dict:
     if version.exit_code or version.timed_out:
         raise ValueError("Could not determine the native Node version")
     return {
+        "adapter": "mcp",
         "repository": "https://github.com/modelcontextprotocol/conformance",
         "commit": MCP_PIN,
         "checkout": str(checkout),
@@ -118,6 +119,7 @@ def _run_control(
     except (OSError, ValueError, subprocess.SubprocessError) as error:
         comparison = Comparison("error", False, f"Native adapter error: {error}")
     return {
+        "adapter": "mcp",
         "control": control.id,
         "spec_version": version,
         "polarity": control.polarity,
@@ -176,7 +178,5 @@ def audit(checkout: Path, output: Path, versions: list[str], *, timeout: float =
             report["expectations_met"] = (
                 report["complete"] and report["summary"]["expectations_met"]
             )
-            pending = output / "report.json.tmp"
-            pending.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-            pending.replace(output / "report.json")
+            write_report(output, report)
     return report

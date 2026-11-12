@@ -32,9 +32,13 @@ jobs:
       - run: uv run --offline pytest
       - run: uv build
 
-  native-mcp:
+  native-suite:
     needs: quality
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -50,10 +54,11 @@ jobs:
           node-version: "22"
       - name: Prepare the pinned native source and dependencies
         run: |
-          git clone https://github.com/bingdongni/conformance.git .cache/conformance
-          git -C .cache/conformance checkout --detach c69c46dbef3083ab4e87b06a6b0e066cc487e214
+          uv sync --locked --no-dev
+          uv run --no-dev python tools/prepare_native.py --adapter all
           npm ci --prefix .cache/conformance --ignore-scripts --no-audit --no-fund
           npm run --prefix .cache/conformance build
-          uv sync --locked --no-dev
-      - name: Run the two-version native control matrix without model calls
-        run: uv run --offline --no-dev evalsentinel audit mcp --checkout .cache/conformance --output-dir runs/native-ci
+      - name: Run all 30 independent controls without model calls
+        run: uv run --offline --no-dev evalsentinel audit all --mcp-checkout .cache/conformance --owasp-baseline .cache/owasp-harness --owasp-candidate .cache/owasp-fixed --output-dir runs/native-ci
+      - name: Verify the matrix and actual strict-mode exit codes
+        run: uv run --offline --no-dev python tools/verify_native_suite.py runs/native-ci/report.json

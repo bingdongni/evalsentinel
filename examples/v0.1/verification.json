@@ -1,0 +1,14 @@
+{
+  "unique_controls": 30,
+  "observation_rows": 60,
+  "strict_exit_codes": {
+    "baseline": 1,
+    "candidate": 0
+  },
+  "model_api_calls": 0,
+  "all_characterizations_matched": true,
+  "recorded_example": {
+    "redacted": "Local filesystem and executable path prefixes only; native verdicts unchanged",
+    "original_sha256": "51d2af0fbc464e3ad5336371e4cf10a92c75e8106976191a716d86b45c5a525c"
+  }
+}

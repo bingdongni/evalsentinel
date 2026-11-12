@@ -1,7 +1,9 @@
 """Compare observations to declared controls without implementing protocol predicates."""
 
+import json
 from collections import Counter
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Literal
 
 from evalsentinel.catalog import CHECK_IDS, Control
@@ -151,3 +153,9 @@ def summarize(rows: list[dict[str, Any]], *, declared_rows: int | None = None) -
         "expectations_matched": sum(row["expectation_met"] for row in rows),
         "expectations_met": bool(rows) and complete and all(row["expectation_met"] for row in rows),
     }
+
+
+def write_report(output: Path, report: dict[str, Any]) -> None:
+    pending = output / "report.json.tmp"
+    pending.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    pending.replace(output / "report.json")
