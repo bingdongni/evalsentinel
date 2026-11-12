@@ -6,6 +6,9 @@ v0.1 提供 **30 个具名对照**：8 个 MCP 分页对照和 22 个 OWASP 审�
 对照。直接调用固定版本的原生实现，保留原始判定与异常。无需 GPU 或模型
 API key，不运行真实转账、删除等动作。
 
+无需本地安装也可试用：[在自己的 fork 中运行原生演示](docs/try-it.md)，然后
+[提交简短试用反馈](https://github.com/bingdongni/evalsentinel/issues/new?template=trial-feedback.yml)。
+
 ## 已验证的正反对照
 
 对 OWASP 原版及其已有修复 PR #211 使用相同的 22 例：

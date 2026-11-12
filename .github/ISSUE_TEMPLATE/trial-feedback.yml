@@ -1,0 +1,36 @@
+name: Native demo trial feedback
+description: Tell us what happened when you tried the native controls
+title: "[Trial] "
+labels: [feedback]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for trying EvalSentinel. Setup failures and missing integration value
+        are useful feedback too. Use invented data; omit secrets and private traces.
+        This form does not require a star, fork, or successful run.
+  - type: dropdown
+    id: result
+    attributes:
+      label: What happened?
+      options:
+        - The native demo matched the documented results
+        - I completed a run but the results differed
+        - Setup or execution failed
+        - I read the demo but did not run it
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Run link or exact reproduction
+      description: A public Actions run link is enough. For a local run, include the commit, OS, versions and command. If you did not run it, say so.
+    validations:
+      required: true
+  - type: textarea
+    id: feedback
+    attributes:
+      label: What would make this useful in your evaluator workflow?
+      description: Describe one useful outcome, setup obstacle or missing contract. Critical feedback is welcome.
+    validations:
+      required: true

@@ -9,6 +9,9 @@ Version 0.1 includes **30 named controls**, MCP pagination and OWASP approval
 binding adapters, and explicit missing-evidence/error outcomes. No model API key,
 GPU or real tool action is needed. [简体中文](README.zh-CN.md)
 
+**Try without a local install:** [run the native demo in your fork](docs/try-it.md)
+and [share a short trial report](https://github.com/bingdongni/evalsentinel/issues/new?template=trial-feedback.yml).
+
 ## A real before/after control
 
 The OWASP integration compares an unchanged native baseline with the proposed
