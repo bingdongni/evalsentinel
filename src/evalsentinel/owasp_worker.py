@@ -1,6 +1,7 @@
 """Isolated process importing the actual pinned OWASP implementation."""
 
 import argparse
+import hashlib
 import importlib
 import inspect
 import json
@@ -33,6 +34,13 @@ def main() -> int:
 
     if not Path(inspect.getfile(evaluate_approval_required)).resolve().is_relative_to(source):
         raise RuntimeError("The assertion did not load from the declared native checkout")
+    hashes = {}
+    for name in ("assertions", "scenario", "trace", "result"):
+        module = importlib.import_module(f"agent_harness.{name}")
+        path = Path(inspect.getfile(module)).resolve()
+        if path != source / "agent_harness" / f"{name}.py":
+            raise RuntimeError("A native module did not load from its declared source file")
+        hashes[f"src/agent_harness/{name}.py"] = hashlib.sha256(path.read_bytes()).hexdigest()
     rows = []
     for case in corpus()["cases"]:
         stage = "scenario_validation"
@@ -73,7 +81,15 @@ def main() -> int:
         rows.append(
             {"control": case["id"], "assertion_invoked": invoked, "stage": stage, **observation}
         )
-    print(json.dumps({"observations": rows, "network_policy": "python-sockets-denied"}))
+    print(
+        json.dumps(
+            {
+                "observations": rows,
+                "network_policy": "python-sockets-denied",
+                "source_sha256": hashes,
+            }
+        )
+    )
     return 0
 
 

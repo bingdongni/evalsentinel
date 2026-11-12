@@ -40,12 +40,17 @@ def audit(
             "summary": native["summary"],
             "report": name + "/report.json",
             "sound": native.get("sound"),
+            "complete": native["complete"],
             "native_processes": native.get(
                 "native_processes", native["summary"].get("native_runs", 0)
             ),
         }
         rows.extend(native["results"])
         summary = summarize(rows, declared_rows=declared)
+        summary["complete"] = summary["complete"] and all(
+            part["complete"] for part in reports.values()
+        )
+        summary["expectations_met"] = summary["complete"] and summary["expectations_met"]
         report = {
             "schema": "evalsentinel.audit.v1",
             "evalsentinel_version": __version__,
@@ -66,6 +71,6 @@ def audit(
             ),
         }
         write_report(output, report)
-    report["sound"] = owasp.adjudicated_sound(rows)
+    report["sound"] = report["complete"] and owasp.adjudicated_sound(rows)
     write_report(output, report)
     return report

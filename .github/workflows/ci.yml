@@ -62,3 +62,8 @@ jobs:
         run: uv run --offline --no-dev evalsentinel audit all --mcp-checkout .cache/conformance --owasp-baseline .cache/owasp-harness --owasp-candidate .cache/owasp-fixed --output-dir runs/native-ci
       - name: Verify the matrix and actual strict-mode exit codes
         run: uv run --offline --no-dev python tools/verify_native_suite.py runs/native-ci/report.json
+      - name: Verify maintainer-commit gating and real native fault controls
+        run: |
+          uv build --offline
+          uv run --isolated --no-project --python 3.12 --with dist/evalsentinel-0.2.0a1-py3-none-any.whl python -m evalsentinel --version
+          uv run --offline --isolated --no-project --python 3.12 --with dist/evalsentinel-0.2.0a1-py3-none-any.whl python tools/verify_maintainer_gate.py --checkout .cache/owasp-fixed --output-dir runs/maintainer-ci

@@ -6,6 +6,11 @@ the scope. Version 0.1 contains the MCP and isolated OWASP native adapters and
 30 named controls. Version/revision repetitions form 60 observation rows, not
 60 independent cases. The baseline's six known policy gaps remain false accepts.
 
+The v0.2 alpha adds a maintainer-selected OWASP commit gate. Read
+`decisions/002-maintainer-gate.md` before changing its policy or exit contract.
+Controlled source mutations are operational liveness checks, not new upstream
+defects or additional independent corpus cases. Keep the historical audit CLI.
+
 - Keep the default workflow CPU-only and free of model API calls. Installing
   explicitly declared dependencies is separate from executing offline tests.
 - Test the actual pinned upstream implementation. A rewritten approximation
