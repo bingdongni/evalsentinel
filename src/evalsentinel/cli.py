@@ -41,6 +41,7 @@ def _execute(args: argparse.Namespace, output: Path) -> dict:
             args.owasp_baseline.resolve(),
             args.owasp_candidate.resolve(),
             output.resolve(),
+            timeout=args.timeout_seconds,
         )
     if args.checkout is None:
         raise ValueError("--checkout is required for a single native adapter")

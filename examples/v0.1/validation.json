@@ -1,7 +1,7 @@
 {
   "version": "0.1.0",
-  "unit_tests_passed": 130,
-  "line_coverage_percent": 90.91,
+  "unit_tests_passed": 131,
+  "line_coverage_percent": 90.95,
   "native_unique_controls": 30,
   "native_observation_rows": 60,
   "strict_exit_codes": {

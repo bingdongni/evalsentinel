@@ -232,7 +232,7 @@ def test_full_suite_denominator_and_native_reports(monkeypatch, tmp_path: Path) 
             * 2,
         }
 
-    def native(_checkout, _output, revision: str) -> dict:
+    def native(_checkout, _output, revision: str, **_kwargs: object) -> dict:
         return {
             "source": {},
             "summary": {},
@@ -257,3 +257,8 @@ def test_full_suite_denominator_and_native_reports(monkeypatch, tmp_path: Path) 
     assert result["native_processes"] == 18
     assert result["expectations_met"]
     assert not result["sound"]
+
+
+def test_full_suite_timeout_is_validated_before_sources(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="Full-suite timeout"):
+        suite.audit(tmp_path, tmp_path, tmp_path, tmp_path, timeout=1)

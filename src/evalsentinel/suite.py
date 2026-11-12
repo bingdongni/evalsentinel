@@ -10,7 +10,11 @@ from evalsentinel.owasp_catalog import corpus
 from evalsentinel.report import summarize, write_report
 
 
-def audit(mcp_checkout: Path, baseline: Path, candidate: Path, output: Path) -> dict[str, Any]:
+def audit(
+    mcp_checkout: Path, baseline: Path, candidate: Path, output: Path, *, timeout: float = 25
+) -> dict[str, Any]:
+    if not mcp.MIN_TIMEOUT <= timeout <= mcp.MAX_TIMEOUT:
+        raise ValueError("Full-suite timeout must be between 15 and 60 seconds per native process")
     mcp.provenance(mcp_checkout)
     owasp.provenance(baseline, "baseline")
     owasp.provenance(candidate, "candidate")
@@ -19,9 +23,15 @@ def audit(mcp_checkout: Path, baseline: Path, candidate: Path, output: Path) -> 
     rows = []
     reports: dict[str, dict[str, Any]] = {}
     stages = (
-        ("mcp", lambda: mcp.audit(mcp_checkout, output / "mcp", list(VERSIONS))),
-        ("baseline", lambda: owasp.audit(baseline, output / "baseline", "baseline")),
-        ("candidate", lambda: owasp.audit(candidate, output / "candidate", "candidate")),
+        ("mcp", lambda: mcp.audit(mcp_checkout, output / "mcp", list(VERSIONS), timeout=timeout)),
+        (
+            "baseline",
+            lambda: owasp.audit(baseline, output / "baseline", "baseline", timeout=timeout),
+        ),
+        (
+            "candidate",
+            lambda: owasp.audit(candidate, output / "candidate", "candidate", timeout=timeout),
+        ),
     )
     for name, run in stages:
         native = run()
