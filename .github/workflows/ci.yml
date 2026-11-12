@@ -65,4 +65,5 @@ jobs:
       - name: Verify maintainer-commit gating and real native fault controls
         run: |
           uv build --offline
+          uv run --isolated --no-project --python 3.12 --with dist/evalsentinel-0.2.0a1-py3-none-any.whl python -m evalsentinel --version
           uv run --offline --isolated --no-project --python 3.12 --with dist/evalsentinel-0.2.0a1-py3-none-any.whl python tools/verify_maintainer_gate.py --checkout .cache/owasp-fixed --output-dir runs/maintainer-ci
