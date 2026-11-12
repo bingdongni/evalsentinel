@@ -1,0 +1,49 @@
+[project]
+name = "evalsentinel"
+version = "0.1.0a1"
+description = "Offline counterexample tests for stateful agent evaluators"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+evalsentinel = "evalsentinel.cli:main"
+
+[build-system]
+requires = ["uv_build==0.13.1"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = [".cache", "decisions/probe_owasp_native.py"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+# The license lives at repository root; built-in boundary exceptions retain
+# specific messages. Dataclass boolean fields are not behavioral flag arguments.
+ignore = ["D", "COM812", "ISC001", "CPY001", "EM101", "EM102", "TRY003", "FBT003"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "PLR2004", "ANN001", "FBT001", "SLF001"]
+"src/evalsentinel/cli.py" = ["T201"]
+# These are the only process-launch sites; argv arrays are used without a shell.
+"src/evalsentinel/process.py" = ["S603", "S607"]
+"src/evalsentinel/mcp.py" = ["PLR0913"]
+"tools/verify_checker_mutation.py" = ["S603", "T201", "INP001"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=evalsentinel --cov-report=term-missing --cov-fail-under=80"
+
+[tool.ty.environment]
+python-version = "3.12"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.4",
+    "ty>=0.0.101",
+]

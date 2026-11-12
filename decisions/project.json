@@ -2,16 +2,29 @@
   "name": "EvalSentinel",
   "selected_on": "2026-11-12",
   "decision": "selected",
-  "implementation_status": "pre-v0.1: selection record and native feasibility probe only",
+  "implementation_status": "first runnable MCP alpha 0.1.0a1; full two-adapter v0.1 not delivered",
   "positioning_zh": "有状态智能体评测器的离线反例测试工具",
   "repository_directory": "D:/PR/evalsentinel",
-  "public_repository_created": false,
-  "default_budget": {"model_api_calls": 0, "gpu_required": false, "paid_services": []},
-  "initial_users": ["Agent/MCP evaluation maintainers", "security assertion maintainers"],
+  "public_repository_created": true,
+  "default_budget": {
+    "model_api_calls": 0,
+    "gpu_required": false,
+    "paid_services": []
+  },
+  "initial_users": [
+    "Agent/MCP evaluation maintainers",
+    "security assertion maintainers"
+  ],
   "v0_1": {
-    "native_contract_families": ["MCP pagination", "declared single-use approval binding"],
+    "native_contract_families": [
+      "MCP pagination",
+      "declared single-use approval binding"
+    ],
     "cross_cutting_gate": "Evidence eligibility for stateful completion claims; missing terminal-state evidence is not a pass",
-    "integrations": ["modelcontextprotocol/conformance native CLI", "OWASP/Agent-Security-Regression-Harness native assertions"],
+    "integrations": [
+      "modelcontextprotocol/conformance native CLI",
+      "OWASP/Agent-Security-Regression-Harness native assertions"
+    ],
     "planned_known_answer_cases_minimum": 30,
     "case_count_is_not_yet_delivered": true,
     "language": "Python 3.12+ control layer, Node for the native MCP toolchain",
@@ -35,13 +48,41 @@
     "owasp_terminal_state_snapshot_contract": "not present in reviewed native Trace model"
   },
   "prior_work": [
-    {"name":"evalmut","url":"https://github.com/egnaro9/evalmut","commit":"bc1f770336386e3957579eddd5e79dc386daced7","overlap":"known-answer semantic mutations, trajectory contracts, equivalent controls, applicability and error classification"},
-    {"name":"InfernoSIM","url":"https://github.com/pranaysparihar/InfernoSIM","overlap":"replay, minimization and CI"},
-    {"name":"TraceTrial-Bench","url":"https://github.com/TraceLite-AI/TraceTrial-Bench","commit":"98a381307184fa4212db3466b21b4c92a031940b","overlap":"harness reliability and trace evidence"},
-    {"name":"Oracle integrity audit","url":"https://arxiv.org/abs/2610.16067v2","read_scope":"abstract"},
-    {"name":"EIO-Agents","url":"https://arxiv.org/abs/2610.07675v1","read_scope":"abstract"}
+    {
+      "name": "evalmut",
+      "url": "https://github.com/egnaro9/evalmut",
+      "commit": "bc1f770336386e3957579eddd5e79dc386daced7",
+      "overlap": "known-answer semantic mutations, trajectory contracts, equivalent controls, applicability and error classification"
+    },
+    {
+      "name": "InfernoSIM",
+      "url": "https://github.com/pranaysparihar/InfernoSIM",
+      "overlap": "replay, minimization and CI"
+    },
+    {
+      "name": "TraceTrial-Bench",
+      "url": "https://github.com/TraceLite-AI/TraceTrial-Bench",
+      "commit": "98a381307184fa4212db3466b21b4c92a031940b",
+      "overlap": "harness reliability and trace evidence"
+    },
+    {
+      "name": "Oracle integrity audit",
+      "url": "https://arxiv.org/abs/2610.16067v2",
+      "read_scope": "abstract"
+    },
+    {
+      "name": "EIO-Agents",
+      "url": "https://arxiv.org/abs/2610.07675v1",
+      "read_scope": "abstract"
+    }
   ],
-  "unverified_claims": ["additional coverage beyond closest existing tools", "maintainer adoption", "cross-implementation portability of the same contract", "performance and memory targets", "research novelty"],
+  "unverified_claims": [
+    "additional coverage beyond closest existing tools",
+    "maintainer adoption",
+    "cross-implementation portability of the same contract",
+    "performance and memory targets",
+    "research novelty"
+  ],
   "acceptance": [
     "A reproducible offline command with complete source pins",
     "Two direct native integrations with an explicit property support matrix",
@@ -52,8 +93,30 @@
     "Native verdicts and per-case denominators are retained",
     "Overlapping cases are compared fairly to existing tools before claiming additional coverage"
   ],
-  "rubric_1_to_5": {"novelty":2,"feasibility":4,"evaluation":4,"robotics_relevance":1,"top_venue_readiness":2},
-  "largest_risks": ["existing tools already meet all needs", "native evidence is insufficient for transfer", "integration cost exceeds maintainer value"],
+  "rubric_1_to_5": {
+    "novelty": 2,
+    "feasibility": 4,
+    "evaluation": 4,
+    "robotics_relevance": 1,
+    "top_venue_readiness": 2
+  },
+  "largest_risks": [
+    "existing tools already meet all needs",
+    "native evidence is insufficient for transfer",
+    "integration cost exceeds maintainer value"
+  ],
   "fast_falsification": "Run the same stateful cases through existing evalmut interfaces and native upstream tests; compare coverage, false flags and adapter effort",
-  "next_delivery": "First runnable MCP integration with pinned positive, negative and missing-evidence controls"
+  "delivered_slice": {
+    "version": "0.1.0a1",
+    "integration": "native MCP CLI",
+    "independent_controls": 8,
+    "protocol_versions": [
+      "2025-11-25",
+      "2026-07-28"
+    ],
+    "observed_native_runs": 16,
+    "model_api_calls": 0
+  },
+  "next_delivery": "Native OWASP package integration and the full attributed v0.1 corpus",
+  "public_repository_url": "https://github.com/bingdongni/evalsentinel"
 }

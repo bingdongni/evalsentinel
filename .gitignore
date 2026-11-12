@@ -4,6 +4,9 @@ node_modules/
 __pycache__/
 runs/
 *.log
+dist/
+.coverage
+coverage.xml
 decisions/evidence/*.txt
 decisions/evidence/*.json
 !decisions/evidence/owasp-native-probe.json

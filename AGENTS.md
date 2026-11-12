@@ -2,8 +2,8 @@
 
 The project direction was selected on 2026-11-12. Read
 `decisions/001-project-selection.md` and `decisions/project.json` before changing
-the scope. This repository currently contains the selection record and a native
-OWASP feasibility probe, not a released EvalSentinel package.
+the scope. The repository now contains the first runnable MCP alpha, plus a native
+OWASP feasibility probe. The full two-adapter, 30-case v0.1 target is not delivered.
 
 - Keep the default workflow CPU-only and free of model API calls. Installing
   explicitly declared dependencies is separate from executing offline tests.
