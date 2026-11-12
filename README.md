@@ -12,7 +12,26 @@ GPU or real tool action is needed. [简体中文](README.zh-CN.md)
 **Try without a local install:** [run the native demo in your fork](docs/try-it.md)
 and [share a short trial report](https://github.com/bingdongni/evalsentinel/issues/new?template=trial-feedback.yml).
 
-## Gate MCP production coverage in CI (v0.3 alpha)
+## Check a real service's required tools (v0.4 alpha)
+
+The native caching profile can pass even when a deployment loses its required
+tools. The new opt-in `service-tools-v1` contract follows the complete tool
+catalog, including empty pages and opaque cursors, and blocks missing or
+duplicate required names. Incomplete traversal stays inconclusive. It reads
+discovery/lists only, never tool actions.
+
+```sh
+evalsentinel check mcp --checkout /path/to/conformance --expected-commit FULL_40_HEX_SHA --url http://127.0.0.1:8080/mcp --contract service-tools-v1 --require-tool execute_sql --output-dir /path/to/new-report
+```
+
+Verified against the **unmodified official DBHub 1.6.1 release** and a local
+read-only SQLite fixture, with separately recorded positive queries, invalid
+SQL and controlled proxy faults. Wrong query results still require independent
+functional assertions; inventory success does not prove tool execution
+correctness. These controls do not claim a new DBHub vulnerability.
+[Real-service setup, expected exits and CI integration](docs/real-service.md).
+
+## Gate MCP production coverage in CI (v0.3+)
 
 For a local MCP 2026-07-28 test server, run the **unchanged native caching CLI**
 and an explicit capability-aware policy. Undeclared optional endpoints do not

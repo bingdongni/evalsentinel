@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0a1 — 2026-11-13
+
+- Added opt-in `service-tools-v1` with caller-required names and a complete,
+  bounded native tool-catalog traversal. Empty pages/cursors remain valid;
+  incomplete execution cannot establish missing-tool violations.
+- Integrated the unchanged official DBHub 1.6.1 npm release using a locked
+  runtime and local read-only SQLite. Native positive/negative SQL assertions,
+  eight proxy interventions and remaining functional blind spots are explicit.
+- Added installed-wheel real-service controls to Windows/Linux CI. Existing
+  caching/coverage contracts and the 30-control corpus remain unchanged.
+- No model API calls or GPU; no new original DBHub defect is claimed.
+
 ## 0.3.0a1 — 2026-11-12
 
 - Added explicit production/strict caching profiles over the unchanged native

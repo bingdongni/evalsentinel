@@ -9,7 +9,21 @@ API key，不运行真实转账、删除等动作。
 无需本地安装也可试用：[在自己的 fork 中运行原生演示](docs/try-it.md)，然后
 [提交简短试用反馈](https://github.com/bingdongni/evalsentinel/issues/new?template=trial-feedback.yml)。
 
-## v0.3 alpha：MCP 生产检查和执行覆盖门禁
+## v0.4 alpha：真实服务接入与必需工具门禁
+
+已接入原样的官方 DBHub 1.6.1 发布包，用本地只读 SQLite 做实际查询正反对照。
+新增 `service-tools-v1`：调用者指定必需工具，门禁遍历完整列表后判断，覆盖空页、
+空字符串游标、后续页丢工具、重复名称和循环游标。缺失工具阻断，不完整遍历不可判定。
+
+```sh
+evalsentinel check mcp --checkout /path/to/conformance --expected-commit FULL_40_HEX_SHA --url http://127.0.0.1:8080/mcp --contract service-tools-v1 --require-tool execute_sql --output-dir /path/to/new-report
+```
+
+该门禁只读 discovery/list，不调用工具。SQL 返回值是否正确由独立的已知数据断言验证，
+不会把“列表有工具”当成“工具执行正确”。代理注入的故障与原版服务行为分别记录，
+不声称发现了新的 DBHub 漏洞。详见[真实服务对照与 CI 接入](docs/real-service.md)。
+
+## v0.3+：MCP 生产检查和执行覆盖门禁
 
 对已启动的本地 MCP 2026-07-28 服务，运行原样的上游 caching CLI，再按明确声明的
 生产策略判断适用性。只声明 tools 的服务不会因为缺少 prompts/resources 而误报；

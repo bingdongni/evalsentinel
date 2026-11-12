@@ -2,3 +2,4 @@
 # Published native evidence must keep the bytes whose hashes the reports record.
 examples/v0.3/*.wire.json -text
 examples/v0.3/*.checks.json -text
+examples/v0.4/*.wire.json -text whitespace=cr-at-eol

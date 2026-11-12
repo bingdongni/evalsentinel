@@ -17,6 +17,12 @@ production scoping is a separate policy. Wire success never supplies semantic
 coverage. The optional Skills all-skipped control explicitly uses native
 `--force`; it does not demonstrate a full SDK tier passing.
 
+The v0.4 alpha adds the caller-required `service-tools-v1` inventory contract and
+an official DBHub release integration. Read `decisions/004-real-service-contract.md`.
+Keep seeded proxy faults separate from original service defects. Empty tool lists
+are legal MCP; required names are caller policy. Inventory success does not prove
+tool execution correctness. Preserve the separate real SQLite functional controls.
+
 - Keep the default workflow CPU-only and free of model API calls. Installing
   explicitly declared dependencies is separate from executing offline tests.
 - Test the actual pinned upstream implementation. A rewritten approximation

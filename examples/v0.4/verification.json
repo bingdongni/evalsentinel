@@ -1,0 +1,460 @@
+{
+  "evalsentinel_version": "0.4.0a1",
+  "loaded_module": "<isolated-site-packages>/evalsentinel/__init__.py",
+  "native_commit": "96a6f9478b7f2e125cf0360a213383cf57533893",
+  "real_service": {
+    "package": "@bytebase/dbhub",
+    "version": "1.6.1",
+    "npm_integrity": "sha512-QvpejQR82n7Zs2UEO5wb+CrNdrDMAxS+rlnKSqmrdQ0fMwiUqOoKv92Q/6/Gt+oRIwcW6CBS91fLoJr6Z4cz3A==",
+    "source_commit_from_release_metadata": "c4166110eee8d42a717c0e047f80a0592fa79f69",
+    "sdk_server_version": "2.4.0",
+    "lock_sha256": "9a7eefb2953b6fe138e6877c0110d6508d3d28b1a350247921738f5986dd533d",
+    "dist_sha256": {
+      "dist/chunk-3SG5A73F.js": "5b95769ba52c9d7cd1f555999d56fedb0df923af827523fce438abf579c47b24",
+      "dist/chunk-5DFAQP5L.js": "9f5a4be553155e32b04a9afa102f0075366b4d0c8f2ea3484731fb99db064023",
+      "dist/chunk-5XSBOK3W.js": "74d8524559df637ed8122078995438917b4b97c6a0586d4fd8d6b3323a8628b9",
+      "dist/chunk-73VXFRFT.js": "3db67c429b491200444cd0eaff66ae56cfa6b273c8ecace1fc800324c5533f76",
+      "dist/chunk-FU2ZJE4E.js": "ed9177d080527b6a5197f36846225efb2ce1d974d6fd28a374199686fedd8d12",
+      "dist/chunk-SR7SSJAL.js": "37bb5ed299c3541824644d6e792aca1a7702ee12f0f8b20d6ee13c7c601a51cb",
+      "dist/chunk-WG2SQYSD.js": "a6c2a3df38ea6be98bbc2ff9498623d71293bc2b76516c31f88cab602cff6e09",
+      "dist/chunk-WKXZYQMT.js": "c2a25c1de2b1704e5200391326c06547d242319caed245259f3c0096545a4ca4",
+      "dist/chunk-WVVMH6FJ.js": "93f49dbfb480599655061fab7f89a135c060845872a206fad3929269f7cd8373",
+      "dist/chunk-X2EC47W4.js": "9fce10c1bb5994d1d3bc6c5fd995b64b499e6f02a4f1af22f28977b0f8d2740c",
+      "dist/chunk-Y2EIZYPD.js": "95b0f3b1a7d824e41430846a987425ddbd5afa00f2f75f1e850f294abbb54363",
+      "dist/demo-loader-PSMTLZ2T.js": "a88bc08427e609ab4ebe2f6100517900628e7908431dd10904ba8b37eedf101d",
+      "dist/index.js": "6fc160100bc7f301847c815053c7fa1ea4e0466b3bba4805108bad912ff8b435",
+      "dist/mariadb-QMBJPL57.js": "16b7ac5149323b16f90fea8e3cd246f9b86d77cb042cd121ef9714cd2e19dbc7",
+      "dist/mysql-KOPISUOR.js": "86acc798e5255be4fd44e8bdbef658377bcbae138710633bc9375159b88c6382",
+      "dist/oracle-THZQYEXX.js": "115a17697192f2abebf50596ea5d07bda01b1181af0654ed467c33b024f4661b",
+      "dist/postgres-SCL27234.js": "84272ce2018126c31d77f3fd749d9faecc30c9250a063e01f4e55ff45d1a39fc",
+      "dist/public/assets/index-OKvWXgvK.js": "675737a17361dae05958335f71d34b503784d133e7e2fb7ffa6cfb092620e9ea",
+      "dist/registry-CSHU2VJR.js": "b5e4331b4ca641fed348010470137f7a99b25ddd732c9a7983281e9fb2bec8fd",
+      "dist/sqlite-CRMXMWOU.js": "6eb21dc12b48930a97ec9c5403941c641f88e5bf349331a9abf91d7c84d328a3",
+      "dist/sqlserver-2N5ZKESL.js": "e8d4d9a5eb3ce91d878441a6aa4175d44c17f046a1d7b61a1ddd04f6622c86e0"
+    }
+  },
+  "intervention_modes": 8,
+  "cache_and_service_profile_observations": 16,
+  "functional_observations": 8,
+  "all_expected_exits_matched": true,
+  "model_api_calls": 0,
+  "gpu_required": false,
+  "remaining_blind_spot": "SQL result semantics require the independent functional assertions; inventory alone does not detect wrong rows",
+  "results": [
+    {
+      "mode": "passthrough",
+      "expected_exits": [
+        0,
+        0,
+        0
+      ],
+      "actual_exits": [
+        0,
+        0,
+        0
+      ],
+      "caching_gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "service_gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "diagnostics": []
+      },
+      "inventory": {
+        "required": [
+          "execute_sql"
+        ],
+        "observed": [
+          "execute_sql"
+        ],
+        "missing": [],
+        "duplicate_names": [],
+        "pages": 1,
+        "complete": true
+      },
+      "functional": {
+        "positive_rows_match": true,
+        "invalid_sql_rejected": true,
+        "wire_valid": true
+      },
+      "native_exit": 1,
+      "native_counts": {
+        "SUCCESS": 4,
+        "FAILURE": 3,
+        "SKIPPED": 1
+      },
+      "wire_sha256": "0cf40fb65ea03aa7d326451199bbbddc8ca4b01d1bba2d1c4604ae96030f0836",
+      "directory": "passthrough"
+    },
+    {
+      "mode": "hide-tool",
+      "expected_exits": [
+        0,
+        1,
+        0
+      ],
+      "actual_exits": [
+        0,
+        1,
+        0
+      ],
+      "caching_gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "service_gate": {
+        "status": "violated",
+        "exit_code": 1,
+        "violations": [
+          "required-tool:execute_sql"
+        ],
+        "diagnostics": []
+      },
+      "inventory": {
+        "required": [
+          "execute_sql"
+        ],
+        "observed": [],
+        "missing": [
+          "execute_sql"
+        ],
+        "duplicate_names": [],
+        "pages": 1,
+        "complete": true
+      },
+      "functional": {
+        "positive_rows_match": true,
+        "invalid_sql_rejected": true,
+        "wire_valid": true
+      },
+      "native_exit": 1,
+      "native_counts": {
+        "SUCCESS": 4,
+        "FAILURE": 3,
+        "SKIPPED": 1
+      },
+      "wire_sha256": "5dd99b773d0bd36abf927d700fcda1369f1b344f808d5449016080d82e8ae133",
+      "directory": "hide-tool"
+    },
+    {
+      "mode": "strip-hint",
+      "expected_exits": [
+        1,
+        1,
+        0
+      ],
+      "actual_exits": [
+        1,
+        1,
+        0
+      ],
+      "caching_gate": {
+        "status": "violated",
+        "exit_code": 1,
+        "violations": [
+          "sep-2549-tools-list-caching-hints",
+          "sep-2549-ttl-non-negative",
+          "wire-schema-valid"
+        ],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "service_gate": {
+        "status": "violated",
+        "exit_code": 1,
+        "violations": [
+          "sep-2549-tools-list-caching-hints",
+          "sep-2549-ttl-non-negative",
+          "wire-schema-valid",
+          "wire-schema-valid"
+        ],
+        "diagnostics": []
+      },
+      "inventory": null,
+      "functional": {
+        "positive_rows_match": true,
+        "invalid_sql_rejected": true,
+        "wire_valid": true
+      },
+      "native_exit": 1,
+      "native_counts": {
+        "FAILURE": 6,
+        "SKIPPED": 1,
+        "SUCCESS": 1
+      },
+      "wire_sha256": "f0dd4c09d5498d9f9805bfa1f1a7ac44c4e907e2e72a8bf769500ee1b0f79ace",
+      "directory": "strip-hint"
+    },
+    {
+      "mode": "paged-empty-cursor",
+      "expected_exits": [
+        0,
+        0,
+        0
+      ],
+      "actual_exits": [
+        0,
+        0,
+        0
+      ],
+      "caching_gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "service_gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "diagnostics": []
+      },
+      "inventory": {
+        "required": [
+          "execute_sql"
+        ],
+        "observed": [
+          "execute_sql"
+        ],
+        "missing": [],
+        "duplicate_names": [],
+        "pages": 2,
+        "complete": true
+      },
+      "functional": {
+        "positive_rows_match": true,
+        "invalid_sql_rejected": true,
+        "wire_valid": true
+      },
+      "native_exit": 1,
+      "native_counts": {
+        "SUCCESS": 4,
+        "FAILURE": 3,
+        "SKIPPED": 1
+      },
+      "wire_sha256": "4cbae90b8842b98e946e070311b4d8c2d33373d1adb4d6afec1774f66167e212",
+      "directory": "paged-empty-cursor"
+    },
+    {
+      "mode": "hide-later-tool",
+      "expected_exits": [
+        0,
+        1,
+        0
+      ],
+      "actual_exits": [
+        0,
+        1,
+        0
+      ],
+      "caching_gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "service_gate": {
+        "status": "violated",
+        "exit_code": 1,
+        "violations": [
+          "required-tool:execute_sql"
+        ],
+        "diagnostics": []
+      },
+      "inventory": {
+        "required": [
+          "execute_sql"
+        ],
+        "observed": [],
+        "missing": [
+          "execute_sql"
+        ],
+        "duplicate_names": [],
+        "pages": 2,
+        "complete": true
+      },
+      "functional": {
+        "positive_rows_match": true,
+        "invalid_sql_rejected": true,
+        "wire_valid": true
+      },
+      "native_exit": 1,
+      "native_counts": {
+        "SUCCESS": 4,
+        "FAILURE": 3,
+        "SKIPPED": 1
+      },
+      "wire_sha256": "75a9ae7d7eea4e44f41efe8aaafa6c44fb3fa90036688e8acb491f2a02c27453",
+      "directory": "hide-later-tool"
+    },
+    {
+      "mode": "cursor-cycle",
+      "expected_exits": [
+        0,
+        2,
+        0
+      ],
+      "actual_exits": [
+        0,
+        2,
+        0
+      ],
+      "caching_gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "service_gate": {
+        "status": "error",
+        "exit_code": 2,
+        "diagnostics": [
+          {
+            "code": "INVALID_EVIDENCE",
+            "message": "Native inventory traversal incomplete: {'type': 'Error', 'message': 'Invalid or repeated pagination cursor; traversal incomplete'}"
+          }
+        ]
+      },
+      "inventory": null,
+      "functional": {
+        "positive_rows_match": true,
+        "invalid_sql_rejected": true,
+        "wire_valid": true
+      },
+      "native_exit": 1,
+      "native_counts": {
+        "SUCCESS": 4,
+        "FAILURE": 3,
+        "SKIPPED": 1
+      },
+      "wire_sha256": "6d93872e8f7b719885dbce91726072f5636cbd62a1fb412f0fbf2afa314f01ff",
+      "directory": "cursor-cycle"
+    },
+    {
+      "mode": "duplicate-name",
+      "expected_exits": [
+        0,
+        1,
+        0
+      ],
+      "actual_exits": [
+        0,
+        1,
+        0
+      ],
+      "caching_gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "service_gate": {
+        "status": "violated",
+        "exit_code": 1,
+        "violations": [
+          "duplicate-tool:execute_sql"
+        ],
+        "diagnostics": []
+      },
+      "inventory": {
+        "required": [
+          "execute_sql"
+        ],
+        "observed": [
+          "execute_sql"
+        ],
+        "missing": [],
+        "duplicate_names": [
+          "execute_sql"
+        ],
+        "pages": 1,
+        "complete": true
+      },
+      "functional": {
+        "positive_rows_match": true,
+        "invalid_sql_rejected": true,
+        "wire_valid": true
+      },
+      "native_exit": 1,
+      "native_counts": {
+        "SUCCESS": 4,
+        "FAILURE": 3,
+        "SKIPPED": 1
+      },
+      "wire_sha256": "e747415483f24a1fe59840bd1119738d13dbfff3579e242d981993d247b48bfe",
+      "directory": "duplicate-name"
+    },
+    {
+      "mode": "wrong-query-result",
+      "expected_exits": [
+        0,
+        0,
+        1
+      ],
+      "actual_exits": [
+        0,
+        0,
+        1
+      ],
+      "caching_gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "service_gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "diagnostics": []
+      },
+      "inventory": {
+        "required": [
+          "execute_sql"
+        ],
+        "observed": [
+          "execute_sql"
+        ],
+        "missing": [],
+        "duplicate_names": [],
+        "pages": 1,
+        "complete": true
+      },
+      "functional": {
+        "positive_rows_match": false,
+        "invalid_sql_rejected": true,
+        "wire_valid": true
+      },
+      "native_exit": 1,
+      "native_counts": {
+        "SUCCESS": 4,
+        "FAILURE": 3,
+        "SKIPPED": 1
+      },
+      "wire_sha256": "15109f33850daa486092aaf367a4a413ebbb00b33050111d835f9209efd5b593",
+      "directory": "wrong-query-result"
+    }
+  ]
+}

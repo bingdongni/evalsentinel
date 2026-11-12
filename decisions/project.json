@@ -2,7 +2,7 @@
   "name": "EvalSentinel",
   "selected_on": "2026-11-12",
   "decision": "selected",
-  "implementation_status": "v0.2 alpha: caller-selected OWASP commit policy gate, native source integrity and real CI fault controls",
+  "implementation_status": "v0.4 alpha: native MCP service inventory policy plus official DBHub/SQLite integration; existing OWASP and caching gates retained",
   "positioning_zh": "\u6709\u72b6\u6001\u667a\u80fd\u4f53\u8bc4\u6d4b\u5668\u7684\u79bb\u7ebf\u53cd\u4f8b\u6d4b\u8bd5\u5de5\u5177",
   "repository_directory": "D:/PR/evalsentinel",
   "public_repository_created": true,
