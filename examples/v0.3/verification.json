@@ -1,0 +1,376 @@
+{
+  "evalsentinel_version": "0.3.0a1",
+  "loaded_module": "<isolated-site-packages>/evalsentinel/__init__.py",
+  "native_commit": "96a6f9478b7f2e125cf0360a213383cf57533893",
+  "platform": "nt",
+  "cache_fixture_modes": 8,
+  "cache_profile_observations": 11,
+  "cache_results": [
+    {
+      "fixture": "tools-only",
+      "contract": "production-caching-v1",
+      "expected_exit": 0,
+      "gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 7,
+        "in_scope": 3,
+        "passed": 3,
+        "failed": 0,
+        "not_run": 0,
+        "not_applicable": 4,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      },
+      "native_exit": 1,
+      "native_status_counts": {
+        "SUCCESS": 4,
+        "FAILURE": 3,
+        "SKIPPED": 1
+      },
+      "report": "tools-only-production-caching-v1\\report.json",
+      "wire_sha256": "68743ab5d69308828c6158a5b3705a1b95fd13408b3eaa4d1605d5ffcee6d1d1"
+    },
+    {
+      "fixture": "tools-only",
+      "contract": "sdk-caching-v1",
+      "expected_exit": 1,
+      "gate": {
+        "status": "violated",
+        "exit_code": 1,
+        "violations": [
+          "sep-2549-prompts-list-caching-hints",
+          "sep-2549-resources-list-caching-hints",
+          "sep-2549-resources-templates-list-caching-hints"
+        ],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [
+          "sep-2549-resources-read-caching-hints"
+        ],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 7,
+        "in_scope": 7,
+        "passed": 3,
+        "failed": 3,
+        "not_run": 1,
+        "not_applicable": 0,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      },
+      "native_exit": 1,
+      "native_status_counts": {
+        "SUCCESS": 4,
+        "FAILURE": 3,
+        "SKIPPED": 1
+      },
+      "report": "tools-only-sdk-caching-v1\\report.json",
+      "wire_sha256": "68743ab5d69308828c6158a5b3705a1b95fd13408b3eaa4d1605d5ffcee6d1d1"
+    },
+    {
+      "fixture": "full",
+      "contract": "production-caching-v1",
+      "expected_exit": 0,
+      "gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 7,
+        "in_scope": 7,
+        "passed": 7,
+        "failed": 0,
+        "not_run": 0,
+        "not_applicable": 0,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      },
+      "native_exit": 0,
+      "native_status_counts": {
+        "SUCCESS": 8
+      },
+      "report": "full-production-caching-v1\\report.json",
+      "wire_sha256": "338fbab02e6edf358b51dfed4ddce5a97acf40849919c2d0c5676df061ea4fd2"
+    },
+    {
+      "fixture": "full",
+      "contract": "sdk-caching-v1",
+      "expected_exit": 0,
+      "gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 7,
+        "in_scope": 7,
+        "passed": 7,
+        "failed": 0,
+        "not_run": 0,
+        "not_applicable": 0,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      },
+      "native_exit": 0,
+      "native_status_counts": {
+        "SUCCESS": 8
+      },
+      "report": "full-sdk-caching-v1\\report.json",
+      "wire_sha256": "338fbab02e6edf358b51dfed4ddce5a97acf40849919c2d0c5676df061ea4fd2"
+    },
+    {
+      "fixture": "broken-prompts",
+      "contract": "production-caching-v1",
+      "expected_exit": 1,
+      "gate": {
+        "status": "violated",
+        "exit_code": 1,
+        "violations": [
+          "sep-2549-prompts-list-caching-hints"
+        ],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 7,
+        "in_scope": 7,
+        "passed": 6,
+        "failed": 1,
+        "not_run": 0,
+        "not_applicable": 0,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      },
+      "native_exit": 1,
+      "native_status_counts": {
+        "SUCCESS": 7,
+        "FAILURE": 1
+      },
+      "report": "broken-prompts-production-caching-v1\\report.json",
+      "wire_sha256": "e26fdc6554c5c205c4f9b1de6649ed9f9edb95ddfa48531631b015feed791537"
+    },
+    {
+      "fixture": "bad-ttl",
+      "contract": "production-caching-v1",
+      "expected_exit": 1,
+      "gate": {
+        "status": "violated",
+        "exit_code": 1,
+        "violations": [
+          "sep-2549-ttl-non-negative",
+          "wire-schema-valid"
+        ],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 7,
+        "in_scope": 7,
+        "passed": 6,
+        "failed": 1,
+        "not_run": 0,
+        "not_applicable": 0,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      },
+      "native_exit": 1,
+      "native_status_counts": {
+        "SUCCESS": 6,
+        "FAILURE": 2
+      },
+      "report": "bad-ttl-production-caching-v1\\report.json",
+      "wire_sha256": "c8cddc16f3e686969010db3888fae74d7baf190fadb31e858b288e14ebb53cf2"
+    },
+    {
+      "fixture": "no-capabilities",
+      "contract": "production-caching-v1",
+      "expected_exit": 2,
+      "gate": {
+        "status": "inconclusive",
+        "exit_code": 2,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 7,
+        "in_scope": 0,
+        "passed": 0,
+        "failed": 0,
+        "not_run": 0,
+        "not_applicable": 7,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      },
+      "native_exit": 1,
+      "native_status_counts": {
+        "FAILURE": 6,
+        "SKIPPED": 1,
+        "SUCCESS": 1
+      },
+      "report": "no-capabilities-production-caching-v1\\report.json",
+      "wire_sha256": "31dd0d01869f4307241e8bf8684eb68608b52d4bd07787128b69e24615c244d4"
+    },
+    {
+      "fixture": "empty-resources",
+      "contract": "production-caching-v1",
+      "expected_exit": 0,
+      "gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 7,
+        "in_scope": 7,
+        "passed": 6,
+        "failed": 0,
+        "not_run": 1,
+        "not_applicable": 0,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      },
+      "native_exit": 0,
+      "native_status_counts": {
+        "SUCCESS": 7,
+        "SKIPPED": 1
+      },
+      "report": "empty-resources-production-caching-v1\\report.json",
+      "wire_sha256": "cd0573bf8b9452ca2bf832846abbd0f65ab9c8b9d6210360c93152ecf37878e8"
+    },
+    {
+      "fixture": "empty-resources",
+      "contract": "sdk-caching-v1",
+      "expected_exit": 2,
+      "gate": {
+        "status": "inconclusive",
+        "exit_code": 2,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [
+          "sep-2549-resources-read-caching-hints"
+        ],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 7,
+        "in_scope": 7,
+        "passed": 6,
+        "failed": 0,
+        "not_run": 1,
+        "not_applicable": 0,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      },
+      "native_exit": 0,
+      "native_status_counts": {
+        "SUCCESS": 7,
+        "SKIPPED": 1
+      },
+      "report": "empty-resources-sdk-caching-v1\\report.json",
+      "wire_sha256": "cd0573bf8b9452ca2bf832846abbd0f65ab9c8b9d6210360c93152ecf37878e8"
+    },
+    {
+      "fixture": "discovery-change",
+      "contract": "production-caching-v1",
+      "expected_exit": 2,
+      "gate": {
+        "status": "error",
+        "exit_code": 2,
+        "diagnostics": [
+          {
+            "code": "INVALID_EVIDENCE",
+            "message": "Capability declarations changed during execution"
+          }
+        ]
+      },
+      "coverage": null,
+      "native_exit": 0,
+      "native_status_counts": {
+        "SUCCESS": 8
+      },
+      "report": "discovery-change-production-caching-v1\\report.json",
+      "wire_sha256": "ac96c8781be4db041741e30f16c226b8878876e86385a1c1feae95307209ffe9"
+    },
+    {
+      "fixture": "invalid-discovery",
+      "contract": "production-caching-v1",
+      "expected_exit": 2,
+      "gate": {
+        "status": "error",
+        "exit_code": 2,
+        "diagnostics": [
+          {
+            "code": "INVALID_EVIDENCE",
+            "message": "Native discovery wire validation failed"
+          }
+        ]
+      },
+      "coverage": null,
+      "native_exit": null,
+      "native_status_counts": {},
+      "report": "invalid-discovery-production-caching-v1\\report.json",
+      "wire_sha256": "cd61ddd924a07e908b811003c45d8271086932bb69cbe82ede5e3ede0d478c75"
+    }
+  ],
+  "artifact_results": [
+    {
+      "fixture": "all-skipped",
+      "native_exit": 0,
+      "gate": {
+        "status": "inconclusive",
+        "exit_code": 2,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [
+          "sep-2640-skills-list-implemented"
+        ],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 31,
+        "in_scope": 31,
+        "passed": 0,
+        "failed": 0,
+        "not_run": 31,
+        "not_applicable": 0,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      }
+    },
+    {
+      "fixture": "exercised",
+      "native_exit": 0,
+      "gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "violations": [],
+        "missing_required_checks": [],
+        "unexercised_required_checks": [],
+        "diagnostics": []
+      },
+      "coverage": {
+        "semantic_checks": 7,
+        "in_scope": 7,
+        "passed": 7,
+        "failed": 0,
+        "not_run": 0,
+        "not_applicable": 0,
+        "wire_checks_excluded_from_semantic_denominator": 1
+      }
+    }
+  ],
+  "all_expected_exits_matched": true,
+  "model_api_calls": 0,
+  "gpu_required": false
+}

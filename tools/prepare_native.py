@@ -6,6 +6,7 @@ import subprocess
 from pathlib import Path
 
 from evalsentinel.catalog import MCP_PIN
+from evalsentinel.mcp_gate import NATIVE_PIN
 from evalsentinel.owasp_catalog import corpus
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,18 +40,26 @@ def clone(path: Path, url: str, pin: str) -> None:
     if path.exists():
         verify(path, pin)
         return
-    git("clone", "--no-checkout", url, str(path))
+    git("clone", "--no-checkout", "--config", "core.autocrlf=false", url, str(path))
     git("-c", f"safe.directory={path.as_posix()}", "-C", str(path), "checkout", "--detach", pin)
     verify(path, pin)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--adapter", choices=["all", "owasp", "mcp"], default="owasp")
+    parser.add_argument(
+        "--adapter", choices=["all", "owasp", "mcp", "mcp-production"], default="owasp"
+    )
     args = parser.parse_args()
     CACHE.mkdir(exist_ok=True)
     if args.adapter in {"all", "mcp"}:
         clone(CACHE / "conformance", "https://github.com/bingdongni/conformance.git", MCP_PIN)
+    if args.adapter == "mcp-production":
+        clone(
+            CACHE / "conformance-production",
+            "https://github.com/modelcontextprotocol/conformance.git",
+            NATIVE_PIN,
+        )
     if args.adapter in {"all", "owasp"}:
         pins = corpus()["pins"]
         base = CACHE / "owasp-harness"

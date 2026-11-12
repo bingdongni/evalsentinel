@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-11-12T09:10:02.056Z",
+  "main": "96a6f9478b7f2e125cf0360a213383cf57533893",
+  "issue": {
+    "number": 516,
+    "url": "https://github.com/modelcontextprotocol/conformance/issues/516",
+    "state": "open",
+    "updated_at": "2026-11-12T00:33:50Z",
+    "latest_comment": "https://github.com/modelcontextprotocol/conformance/issues/516#issuecomment-6810777674",
+    "latest_comment_at": "2026-11-12T00:33:50Z"
+  },
+  "prs": [
+    {
+      "number": 537,
+      "url": "https://github.com/modelcontextprotocol/conformance/pull/537",
+      "state": "open",
+      "merged": false,
+      "head": "5c63aa13ae88cd1887ddcb9204aecc51f7d61043",
+      "updated_at": "2026-09-29T15:46:22Z",
+      "mergeable_state": "blocked"
+    },
+    {
+      "number": 538,
+      "url": "https://github.com/modelcontextprotocol/conformance/pull/538",
+      "state": "open",
+      "merged": false,
+      "head": "0d0746000097afa6ec8e1d685497ea4bdb36a7de",
+      "updated_at": "2026-09-30T23:16:22Z",
+      "mergeable_state": "blocked"
+    },
+    {
+      "number": 410,
+      "url": "https://github.com/modelcontextprotocol/conformance/pull/410",
+      "state": "open",
+      "merged": false,
+      "head": "bcff2b6ff92eeefb46ed1ee8da1f7457e8bd7d1c",
+      "updated_at": "2026-09-28T06:14:41Z",
+      "mergeable_state": "dirty"
+    },
+    {
+      "number": 567,
+      "url": "https://github.com/modelcontextprotocol/conformance/pull/567",
+      "state": "open",
+      "merged": false,
+      "head": "711da52caf3d2600db8e78aee352c4aa59418e14",
+      "updated_at": "2026-10-20T23:56:03Z",
+      "mergeable_state": "blocked"
+    },
+    {
+      "number": 583,
+      "url": "https://github.com/modelcontextprotocol/conformance/pull/583",
+      "state": "open",
+      "merged": false,
+      "head": "c69c46dbef3083ab4e87b06a6b0e066cc487e214",
+      "updated_at": "2026-11-12T06:39:37Z",
+      "mergeable_state": "blocked"
+    }
+  ]
+}

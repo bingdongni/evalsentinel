@@ -1,0 +1,61 @@
+name: Packaged MCP production gate
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out only the original native consumer
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: modelcontextprotocol/conformance
+          ref: 96a6f9478b7f2e125cf0360a213383cf57533893
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.1"
+          python-version: "3.12"
+          enable-cache: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+      - name: Build the unchanged native runner
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run build
+      - name: Download and verify the public release and synthetic controls
+        env:
+          WHEEL_SHA256: 5e3a11971255668e236acbcaab1ac6ba57aa321bb3814b15f1261c5ca2887077
+          VERIFY_SHA256: 61a6c84f096108f403f6645e16c1c3121c833f93700b46885f09f0aae28b8c23
+          FIXTURE_SHA256: edc43710c63dfa6c62bf4ed898a7a1e9d34197bf0cd2df8c59509b45d3dd4ca3
+        run: |
+          mkdir "$RUNNER_TEMP/mcp-controls"
+          cd "$RUNNER_TEMP/mcp-controls"
+          curl --fail --location --output evalsentinel-0.3.0a1-py3-none-any.whl https://github.com/bingdongni/evalsentinel/releases/download/v0.3.0a1/evalsentinel-0.3.0a1-py3-none-any.whl
+          curl --fail --location --output verify_mcp_gate.py https://raw.githubusercontent.com/bingdongni/evalsentinel/v0.3.0a1/tools/verify_mcp_gate.py
+          curl --fail --location --output mcp_fixture.py https://raw.githubusercontent.com/bingdongni/evalsentinel/v0.3.0a1/tools/mcp_fixture.py
+          printf '%s  %s\n' "$WHEEL_SHA256" evalsentinel-0.3.0a1-py3-none-any.whl | sha256sum --check -
+          printf '%s  %s\n' "$VERIFY_SHA256" verify_mcp_gate.py | sha256sum --check -
+          printf '%s  %s\n' "$FIXTURE_SHA256" mcp_fixture.py | sha256sum --check -
+          uv venv --python 3.12 "$RUNNER_TEMP/evalsentinel"
+          uv pip install --python "$RUNNER_TEMP/evalsentinel/bin/python" ./evalsentinel-0.3.0a1-py3-none-any.whl
+      - name: Run the installed public CLI against native positive and negative controls
+        run: >-
+          "$RUNNER_TEMP/evalsentinel/bin/python"
+          "$RUNNER_TEMP/mcp-controls/verify_mcp_gate.py"
+          --require-installed --checkout "$GITHUB_WORKSPACE"
+          --output-dir "$RUNNER_TEMP/mcp-consumer-proof"
+      - name: Retain the synthetic evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: packaged-mcp-proof
+          path: ${{ runner.temp }}/mcp-consumer-proof
+          if-no-files-found: warn
+          retention-days: 3

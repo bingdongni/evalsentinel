@@ -11,6 +11,12 @@ The v0.2 alpha adds a maintainer-selected OWASP commit gate. Read
 Controlled source mutations are operational liveness checks, not new upstream
 defects or additional independent corpus cases. Keep the historical audit CLI.
 
+The v0.3 alpha adds opt-in MCP caching and semantic coverage gates. Read
+`decisions/003-mcp-production-coverage.md`. Preserve upstream SDK tier behavior;
+production scoping is a separate policy. Wire success never supplies semantic
+coverage. The optional Skills all-skipped control explicitly uses native
+`--force`; it does not demonstrate a full SDK tier passing.
+
 - Keep the default workflow CPU-only and free of model API calls. Installing
   explicitly declared dependencies is separate from executing offline tests.
 - Test the actual pinned upstream implementation. A rewritten approximation

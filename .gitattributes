@@ -1,1 +1,4 @@
 * text=auto eol=lf
+# Published native evidence must keep the bytes whose hashes the reports record.
+examples/v0.3/*.wire.json -text
+examples/v0.3/*.checks.json -text

@@ -65,5 +65,44 @@ jobs:
       - name: Verify maintainer-commit gating and real native fault controls
         run: |
           uv build --offline
-          uv run --isolated --no-project --python 3.12 --with dist/evalsentinel-0.2.0a1-py3-none-any.whl python -m evalsentinel --version
-          uv run --offline --isolated --no-project --python 3.12 --with dist/evalsentinel-0.2.0a1-py3-none-any.whl python tools/verify_maintainer_gate.py --checkout .cache/owasp-fixed --output-dir runs/maintainer-ci
+          uv run --isolated --no-project --python 3.12 --with dist/evalsentinel-0.3.0a1-py3-none-any.whl python -m evalsentinel --version
+          uv run --offline --isolated --no-project --python 3.12 --with dist/evalsentinel-0.3.0a1-py3-none-any.whl python tools/verify_maintainer_gate.py --checkout .cache/owasp-fixed --output-dir runs/maintainer-ci
+
+  mcp-production:
+    needs: quality
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.1"
+          python-version: "3.12"
+          enable-cache: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+      - name: Prepare the unchanged upstream runner and the wheel
+        run: |
+          uv sync --locked --no-dev
+          uv run --no-dev python tools/prepare_native.py --adapter mcp-production
+          npm ci --prefix .cache/conformance-production --ignore-scripts --no-audit --no-fund
+          npm run --prefix .cache/conformance-production build
+          uv build
+          uv run --isolated --no-project --python 3.12 --with dist/evalsentinel-0.3.0a1-py3-none-any.whl python -m evalsentinel --version
+      - name: Verify installed-wheel positive, negative and all-skipped controls offline
+        run: uv run --offline --isolated --no-project --python 3.12 --with dist/evalsentinel-0.3.0a1-py3-none-any.whl python tools/verify_mcp_gate.py --require-installed --checkout .cache/conformance-production --output-dir runs/mcp-production-ci
+      - name: Retain synthetic native evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mcp-production-${{ matrix.os }}
+          path: runs/mcp-production-ci
+          if-no-files-found: warn
+          retention-days: 3

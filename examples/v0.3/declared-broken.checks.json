@@ -1,0 +1,209 @@
+[
+  {
+    "id": "sep-2549-tools-list-caching-hints",
+    "name": "ToolsListCachingHints",
+    "description": "tools/list response includes ttlMs and cacheScope caching hints",
+    "status": "SUCCESS",
+    "timestamp": "2026-11-12T09:11:17.763Z",
+    "specReferences": [
+      {
+        "id": "MCP-Caching",
+        "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+      },
+      {
+        "id": "SEP-2549",
+        "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+      }
+    ],
+    "details": {
+      "ttlMs": 0,
+      "cacheScope": "public",
+      "hasTtlMs": true,
+      "hasCacheScope": true
+    }
+  },
+  {
+    "id": "sep-2549-prompts-list-caching-hints",
+    "name": "PromptsListCachingHints",
+    "description": "prompts/list response includes ttlMs and cacheScope caching hints",
+    "status": "FAILURE",
+    "timestamp": "2026-11-12T09:11:17.770Z",
+    "errorMessage": "prompts/list returned JSON-RPC error -32601: Method not found",
+    "specReferences": [
+      {
+        "id": "MCP-Caching",
+        "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+      },
+      {
+        "id": "SEP-2549",
+        "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+      }
+    ],
+    "details": {
+      "error": {
+        "code": -32601,
+        "message": "Method not found"
+      }
+    }
+  },
+  {
+    "id": "sep-2549-resources-list-caching-hints",
+    "name": "ResourcesListCachingHints",
+    "description": "resources/list response includes ttlMs and cacheScope caching hints",
+    "status": "SUCCESS",
+    "timestamp": "2026-11-12T09:11:17.783Z",
+    "specReferences": [
+      {
+        "id": "MCP-Caching",
+        "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+      },
+      {
+        "id": "SEP-2549",
+        "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+      }
+    ],
+    "details": {
+      "ttlMs": 0,
+      "cacheScope": "public",
+      "hasTtlMs": true,
+      "hasCacheScope": true
+    }
+  },
+  {
+    "id": "sep-2549-resources-templates-list-caching-hints",
+    "name": "ResourcesTemplatesListCachingHints",
+    "description": "resources/templates/list response includes ttlMs and cacheScope caching hints",
+    "status": "SUCCESS",
+    "timestamp": "2026-11-12T09:11:17.791Z",
+    "specReferences": [
+      {
+        "id": "MCP-Caching",
+        "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+      },
+      {
+        "id": "SEP-2549",
+        "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+      }
+    ],
+    "details": {
+      "ttlMs": 0,
+      "cacheScope": "public",
+      "hasTtlMs": true,
+      "hasCacheScope": true
+    }
+  },
+  {
+    "id": "sep-2549-resources-read-caching-hints",
+    "name": "ResourcesReadCachingHints",
+    "description": "resources/read response includes ttlMs and cacheScope caching hints",
+    "status": "SUCCESS",
+    "timestamp": "2026-11-12T09:11:17.815Z",
+    "specReferences": [
+      {
+        "id": "MCP-Caching",
+        "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+      },
+      {
+        "id": "SEP-2549",
+        "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+      }
+    ],
+    "details": {
+      "ttlMs": 0,
+      "cacheScope": "public",
+      "hasTtlMs": true,
+      "hasCacheScope": true
+    }
+  },
+  {
+    "id": "sep-2549-ttl-non-negative",
+    "name": "TtlNonNegative",
+    "description": "All ttlMs values are non-negative integers",
+    "status": "SUCCESS",
+    "timestamp": "2026-11-12T09:11:17.815Z",
+    "specReferences": [
+      {
+        "id": "MCP-Caching",
+        "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+      },
+      {
+        "id": "SEP-2549",
+        "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+      }
+    ],
+    "details": {
+      "endpoints": [
+        {
+          "endpoint": "tools/list",
+          "ttlMs": 0
+        },
+        {
+          "endpoint": "resources/list",
+          "ttlMs": 0
+        },
+        {
+          "endpoint": "resources/templates/list",
+          "ttlMs": 0
+        },
+        {
+          "endpoint": "resources/read",
+          "ttlMs": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": "sep-2549-cache-scope-valid",
+    "name": "CacheScopeValid",
+    "description": "All cacheScope values are \"public\" or \"private\"",
+    "status": "SUCCESS",
+    "timestamp": "2026-11-12T09:11:17.815Z",
+    "specReferences": [
+      {
+        "id": "MCP-Caching",
+        "url": "https://modelcontextprotocol.io/specification/draft/server/utilities/caching"
+      },
+      {
+        "id": "SEP-2549",
+        "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2549"
+      }
+    ],
+    "details": {
+      "endpoints": [
+        {
+          "endpoint": "tools/list",
+          "cacheScope": "public"
+        },
+        {
+          "endpoint": "resources/list",
+          "cacheScope": "public"
+        },
+        {
+          "endpoint": "resources/templates/list",
+          "cacheScope": "public"
+        },
+        {
+          "endpoint": "resources/read",
+          "cacheScope": "public"
+        }
+      ]
+    }
+  },
+  {
+    "id": "wire-schema-valid",
+    "name": "WireSchemaValid",
+    "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+    "status": "SUCCESS",
+    "timestamp": "2026-11-12T09:11:17.815Z",
+    "specReferences": [
+      {
+        "id": "MCP-Schema",
+        "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+      }
+    ],
+    "details": {
+      "messagesValidated": 10,
+      "violations": []
+    }
+  }
+]

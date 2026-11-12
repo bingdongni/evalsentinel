@@ -1,0 +1,453 @@
+[
+  {
+    "id": "sep-2640-capability-declaration-inline",
+    "name": "sep-2640-capability-declaration-inline",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.401Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-capability-requires-resources",
+    "name": "sep-2640-capability-requires-resources",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.401Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-capability-commits-to-methods",
+    "name": "sep-2640-capability-commits-to-methods",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.401Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-capability-empty-object",
+    "name": "sep-2640-capability-empty-object",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.401Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skills-list-implemented",
+    "name": "sep-2640-skills-list-implemented",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.401Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skills-list-pagination",
+    "name": "sep-2640-skills-list-pagination",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.401Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skills-list-entry-atomic",
+    "name": "sep-2640-skills-list-entry-atomic",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.401Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skills-list-cache-attributes",
+    "name": "sep-2640-skills-list-cache-attributes",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-entry-uri-required",
+    "name": "sep-2640-entry-uri-required",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-entry-frontmatter-required",
+    "name": "sep-2640-entry-frontmatter-required",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-entry-uri-matches-frontmatter-name",
+    "name": "sep-2640-entry-uri-matches-frontmatter-name",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skill-uri-scheme",
+    "name": "sep-2640-skill-uri-scheme",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-entry-resources-required",
+    "name": "sep-2640-entry-resources-required",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-resources-complete",
+    "name": "sep-2640-resources-complete",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-resources-uri-within-skill",
+    "name": "sep-2640-resources-uri-within-skill",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-resources-digest-format",
+    "name": "sep-2640-resources-digest-format",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-resources-size-required",
+    "name": "sep-2640-resources-size-required",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-limit-resources-per-skill",
+    "name": "sep-2640-limit-resources-per-skill",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-limit-total-size",
+    "name": "sep-2640-limit-total-size",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-metadata-reserved-prefix",
+    "name": "sep-2640-metadata-reserved-prefix",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-name-naming-rules",
+    "name": "sep-2640-name-naming-rules",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-authority-reg-name",
+    "name": "sep-2640-authority-reg-name",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-names-should-be-unique",
+    "name": "sep-2640-names-should-be-unique",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skills-get-implemented",
+    "name": "sep-2640-skills-get-implemented",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skills-get-entry-shape",
+    "name": "sep-2640-skills-get-entry-shape",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skills-get-cache-attributes",
+    "name": "sep-2640-skills-get-cache-attributes",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skills-get-no-cursor",
+    "name": "sep-2640-skills-get-no-cursor",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skills-get-unknown-uri-invalid-params",
+    "name": "sep-2640-skills-get-unknown-uri-invalid-params",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skillmd-required",
+    "name": "sep-2640-skillmd-required",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-skillmd-frontmatter",
+    "name": "sep-2640-skillmd-frontmatter",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "sep-2640-entry-frontmatter-identical",
+    "name": "sep-2640-entry-frontmatter-identical",
+    "description": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable.",
+    "status": "SKIPPED",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "SEP-2640",
+        "url": "https://skills.extensions.modelcontextprotocol.io/specification/beta/skills"
+      }
+    ],
+    "errorMessage": "Server did not declare the io.modelcontextprotocol/skills extension; enumeration checks not applicable."
+  },
+  {
+    "id": "wire-schema-valid",
+    "name": "WireSchemaValid",
+    "description": "Every JSON-RPC message the implementation sent is valid per the spec JSON schema for the negotiated spec version",
+    "status": "SUCCESS",
+    "timestamp": "2026-11-12T09:11:48.402Z",
+    "specReferences": [
+      {
+        "id": "MCP-Schema",
+        "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/draft/schema.json"
+      }
+    ],
+    "details": {
+      "messagesValidated": 2,
+      "violations": []
+    }
+  }
+]

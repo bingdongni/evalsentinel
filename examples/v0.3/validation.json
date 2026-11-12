@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-12",
+  "unit_tests": 222,
+  "line_coverage_percent": 89.55,
+  "ruff": true,
+  "format": true,
+  "ty": true,
+  "installed_wheel_sha256": "5e3a11971255668e236acbcaab1ac6ba57aa321bb3814b15f1261c5ca2887077",
+  "native_commit": "96a6f9478b7f2e125cf0360a213383cf57533893",
+  "model_api_calls": 0,
+  "gpu_required": false,
+  "scope": "Local Windows proof; GitHub CI status is linked separately after it completes",
+  "redactions": [
+    "local checkout/output paths",
+    "Node executable path",
+    "installed package directory"
+  ],
+  "report_manifest": [
+    {
+      "example": "tools-only.json",
+      "original_report_sha256": "da244e96d0d64a968d21bf8965bf2fa536f800663120b32fbca3ab982534e609",
+      "gate_exit": 0
+    },
+    {
+      "example": "full.json",
+      "original_report_sha256": "3e368178caf6458defdd589fdcf77385d52eca625c7b7ee2148b6dff69568dcc",
+      "gate_exit": 0
+    },
+    {
+      "example": "declared-broken.json",
+      "original_report_sha256": "423173475650e4a961388b8768065f39e95a8717caf4e204620981a52922b6dc",
+      "gate_exit": 1
+    },
+    {
+      "example": "no-capabilities.json",
+      "original_report_sha256": "1f59f4a36c5e526b8b07b5fb8b0938b6fa8f3bb24c00e27bfe6bd67cb7cf41f4",
+      "gate_exit": 2
+    },
+    {
+      "example": "empty-resources.json",
+      "original_report_sha256": "cc5cd8a775406fc55bbe3b24bf746e8a847cacd37087a064e6563bcaeb33a30c",
+      "gate_exit": 0
+    },
+    {
+      "example": "strict-empty-resources.json",
+      "original_report_sha256": "bf7790b525ef71d5b504b4d64d911dd29a6bdc37fe0ec927adb3a583c46b0d2d",
+      "gate_exit": 2
+    },
+    {
+      "example": "all-skipped.json",
+      "original_report_sha256": "390eec47479311a6359e4a91390e6b2cb00c2e24e7d5b7324fc0b609b37b9fee",
+      "gate_exit": 2
+    }
+  ]
+}
