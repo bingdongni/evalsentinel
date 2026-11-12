@@ -1,0 +1,44 @@
+name: Packaged maintainer gate
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the native consumer repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: OWASP/Agent-Security-Regression-Harness
+          ref: 4af47abb5d31b3cd46867b121d89ce316ab81b42
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.1"
+          python-version: "3.12"
+          enable-cache: false
+      - name: Install the release wheel without an EvalSentinel source checkout
+        env:
+          WHEEL_SHA256: e41b03679bce89fca2455d905a20e0c6166262cc43b9c2c0b6ff47ac318f9738
+        run: |
+          curl --fail --location --output evalsentinel-0.2.0a1-py3-none-any.whl https://github.com/bingdongni/evalsentinel/releases/download/v0.2.0a1/evalsentinel-0.2.0a1-py3-none-any.whl
+          printf '%s  %s\n' "$WHEEL_SHA256" evalsentinel-0.2.0a1-py3-none-any.whl | sha256sum --check -
+          uv venv --python 3.12 "$RUNNER_TEMP/evalsentinel"
+          uv pip install --python "$RUNNER_TEMP/evalsentinel/bin/python" ./evalsentinel-0.2.0a1-py3-none-any.whl
+      - name: Gate the native consumer commit
+        env:
+          EXPECTED_COMMIT: 4af47abb5d31b3cd46867b121d89ce316ab81b42
+        run: '"$RUNNER_TEMP/evalsentinel/bin/evalsentinel" check owasp --checkout "$GITHUB_WORKSPACE" --expected-commit "$EXPECTED_COMMIT" --contract single-use-approval-v1 --output-dir "$RUNNER_TEMP/approval-check"'
+      - name: Retain the native consumer report
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: approval-policy-report
+          path: ${{ runner.temp }}/approval-check/report.json
+          if-no-files-found: warn
+          retention-days: 3

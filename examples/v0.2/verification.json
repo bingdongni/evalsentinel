@@ -1,0 +1,180 @@
+{
+  "contract": "single-use-approval-v1",
+  "base_commit": "4af47abb5d31b3cd46867b121d89ce316ab81b42",
+  "new_healthy_commit": "a20c511e383375ce2184bcf5670e619dc2c8cce9",
+  "runs": {
+    "healthy": {
+      "commit": "a20c511e383375ce2184bcf5670e619dc2c8cce9",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "semantic_controls": 18,
+        "guard_controls": 2,
+        "unsupported_controls": 2,
+        "violations": [],
+        "unexpected_controls": [],
+        "diagnostics": []
+      },
+      "classifications": {
+        "correct_accept": 7,
+        "correct_reject": 11,
+        "not_run": 1,
+        "unsupported": 2,
+        "error": 1
+      },
+      "report": "<project>\\runs\\v0.2-wheel-final\\healthy\\report.json"
+    },
+    "overaccept": {
+      "commit": "33565e67d585a25854acea5631c5e151e62dc997",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "gate": {
+        "status": "violated",
+        "exit_code": 1,
+        "semantic_controls": 18,
+        "guard_controls": 2,
+        "unsupported_controls": 2,
+        "violations": [
+          "owasp-no-approval",
+          "owasp-untrusted-source",
+          "owasp-wrong-action",
+          "owasp-denied-decision",
+          "owasp-replay-identical",
+          "owasp-argument-swap",
+          "owasp-bound-argument-mismatch",
+          "owasp-bound-id-mismatch",
+          "owasp-bound-fields-absent",
+          "owasp-bound-id-reused",
+          "owasp-no-sensitive-call",
+          "owasp-wrong-event-kind"
+        ],
+        "unexpected_controls": [],
+        "diagnostics": []
+      },
+      "classifications": {
+        "correct_accept": 7,
+        "false_accept": 11,
+        "evidence_scope_violation": 1,
+        "unsupported": 2,
+        "error": 1
+      },
+      "report": "<project>\\runs\\v0.2-wheel-final\\overaccept\\report.json"
+    },
+    "overreject": {
+      "commit": "35c0d2bee25beb301c28d38be59aacf290f1d47b",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "gate": {
+        "status": "violated",
+        "exit_code": 1,
+        "semantic_controls": 18,
+        "guard_controls": 2,
+        "unsupported_controls": 2,
+        "violations": [
+          "owasp-single-approval",
+          "owasp-renewed-approvals",
+          "owasp-arguments-bound",
+          "owasp-call-id-bound",
+          "owasp-argument-key-order",
+          "owasp-unrelated-tool",
+          "owasp-specific-before-generic",
+          "owasp-no-sensitive-call"
+        ],
+        "unexpected_controls": [],
+        "diagnostics": []
+      },
+      "classifications": {
+        "false_reject": 7,
+        "correct_reject": 11,
+        "evidence_scope_violation": 1,
+        "unsupported": 2,
+        "error": 1
+      },
+      "report": "<project>\\runs\\v0.2-wheel-final\\overreject\\report.json"
+    },
+    "crash": {
+      "commit": "e7ebbfbe4f4609284e5c9dcff063c79814d56a50",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "gate": {
+        "status": "error",
+        "exit_code": 2,
+        "semantic_controls": 18,
+        "guard_controls": 2,
+        "unsupported_controls": 2,
+        "violations": [],
+        "unexpected_controls": [
+          "owasp-argument-key-order",
+          "owasp-argument-swap",
+          "owasp-arguments-bound",
+          "owasp-bound-argument-mismatch",
+          "owasp-bound-fields-absent",
+          "owasp-bound-id-mismatch",
+          "owasp-bound-id-reused",
+          "owasp-call-id-bound",
+          "owasp-denied-decision",
+          "owasp-no-approval",
+          "owasp-no-sensitive-call",
+          "owasp-ordering-unobservable",
+          "owasp-renewed-approvals",
+          "owasp-replay-identical",
+          "owasp-single-approval",
+          "owasp-specific-before-generic",
+          "owasp-terminal-state-unobservable",
+          "owasp-unrelated-tool",
+          "owasp-untrusted-source",
+          "owasp-wrong-action",
+          "owasp-wrong-event-kind"
+        ],
+        "diagnostics": []
+      },
+      "classifications": {
+        "error": 22
+      },
+      "report": "<project>\\runs\\v0.2-wheel-final\\crash\\report.json"
+    },
+    "source_mismatch": {
+      "commit": "0000000000000000000000000000000000000000",
+      "exit_code": 2,
+      "expected_exit": 2
+    },
+    "dirty_source": {
+      "commit": "a20c511e383375ce2184bcf5670e619dc2c8cce9",
+      "exit_code": 2,
+      "expected_exit": 2
+    },
+    "healthy_after": {
+      "commit": "a20c511e383375ce2184bcf5670e619dc2c8cce9",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "gate": {
+        "status": "passed",
+        "exit_code": 0,
+        "semantic_controls": 18,
+        "guard_controls": 2,
+        "unsupported_controls": 2,
+        "violations": [],
+        "unexpected_controls": [],
+        "diagnostics": []
+      },
+      "classifications": {
+        "correct_accept": 7,
+        "correct_reject": 11,
+        "not_run": 1,
+        "unsupported": 2,
+        "error": 1
+      },
+      "report": "<project>\\runs\\v0.2-wheel-final\\healthy-after\\report.json"
+    }
+  },
+  "ordinary_stale_worker_false_accepts": 0,
+  "fresh_source_gate_false_accepts": 11,
+  "model_api_calls": 0,
+  "controlled_mutations_not_upstream_defects": true,
+  "recorded_example": {
+    "original_sha256": "c85a231e874d14749dcbf7cf8355a7749fb3d9dc2adf08435f94caf4174d9382",
+    "paths_redacted": true
+  }
+}

@@ -1,6 +1,15 @@
 # Changelog
 
-## Unreleased
+## 0.2.0a1 — 2026-11-12
+
+- Added a maintainer-selected OWASP commit gate for the explicit
+  `single-use-approval-v1` contract, with blocking semantic/error exits and
+  concise control-level diagnostics.
+- Verified source hashes before, inside and after the native worker. A fresh
+  bytecode-cache prefix prevents stale cached code from masking source changes.
+- Added isolated committed native fault controls and post-experiment healthy
+  replay to Windows/Linux CI. Incomplete native workers propagate incomplete
+  status through full-suite reports.
 
 - Added an opt-in GitHub Actions native demo, reproducible trial instructions and
   a short feedback form. The demo retains its JSON reports for three days and

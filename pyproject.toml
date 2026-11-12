@@ -1,6 +1,6 @@
 [project]
 name = "evalsentinel"
-version = "0.1.0"
+version = "0.2.0a1"
 description = "Offline counterexample tests for stateful agent evaluators"
 readme = "README.md"
 license = "MIT"
@@ -37,6 +37,7 @@ ignore = ["D", "COM812", "ISC001", "CPY001", "EM101", "EM102", "TRY003", "FBT003
 "tools/verify_checker_mutation.py" = ["S603", "T201", "INP001"]
 "tools/prepare_native.py" = ["S603", "T201", "INP001"]
 "tools/verify_native_suite.py" = ["S603", "T201", "INP001"]
+"tools/verify_maintainer_gate.py" = ["S603", "T201", "INP001"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

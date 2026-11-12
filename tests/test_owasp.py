@@ -141,6 +141,8 @@ def test_checkout_pin_and_clean_source_are_verified(
         target.write_text("# native fixture\n", encoding="utf-8")
 
     def run(command: list[str], **_kwargs: object) -> ProcessResult:
+        if "show" in command:
+            return ProcessResult(0, "# native fixture\n", "", timed_out=False)
         return ProcessResult(
             0, corpus()["pins"][revision] if command[-1] == "HEAD" else "", "", timed_out=False
         )
@@ -211,13 +213,17 @@ def test_corpus_rejects_missing_metadata_and_duplicate_ids(monkeypatch) -> None:
         corpus()
 
 
-def test_full_suite_denominator_and_native_reports(monkeypatch, tmp_path: Path) -> None:
+@pytest.mark.parametrize("native_complete", [True, False])
+def test_full_suite_denominator_and_native_reports(
+    monkeypatch, tmp_path: Path, native_complete: bool
+) -> None:
     monkeypatch.setattr(suite.mcp, "provenance", lambda *_args: {})
     monkeypatch.setattr(suite.owasp, "provenance", lambda *_args: {})
 
     def mcp(*_args: object, **_kwargs: object) -> dict:
         return {
             "source": {},
+            "complete": True,
             "summary": {"native_runs": 16},
             "results": [
                 {
@@ -235,6 +241,7 @@ def test_full_suite_denominator_and_native_reports(monkeypatch, tmp_path: Path) 
     def native(_checkout, _output, revision: str, **_kwargs: object) -> dict:
         return {
             "source": {},
+            "complete": native_complete,
             "summary": {},
             "native_processes": 1,
             "sound": revision == "candidate",
@@ -255,7 +262,8 @@ def test_full_suite_denominator_and_native_reports(monkeypatch, tmp_path: Path) 
     assert result["summary"]["independent_controls"] == 30
     assert result["summary"]["declared_rows"] == 60
     assert result["native_processes"] == 18
-    assert result["expectations_met"]
+    assert result["expectations_met"] == native_complete
+    assert result["complete"] == native_complete
     assert not result["sound"]
 
 

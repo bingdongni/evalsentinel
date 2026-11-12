@@ -9,6 +9,19 @@ API key，不运行真实转账、删除等动作。
 无需本地安装也可试用：[在自己的 fork 中运行原生演示](docs/try-it.md)，然后
 [提交简短试用反馈](https://github.com/bingdongni/evalsentinel/issues/new?template=trial-feedback.yml)。
 
+## v0.2 alpha：检查自己的评测器提交
+
+OWASP 断言维护者可以指定当前 PR 的完整提交号与单次审批策略，直接接入 CI：
+
+```sh
+evalsentinel check owasp --checkout /path/to/harness --expected-commit FULL_40_HEX_SHA --contract single-use-approval-v1 --output-dir /path/to/new-report
+```
+
+退出码 **0** 表示 18 个语义对照与两个可执行守卫符合声明策略；**1** 表示契约违反；
+**2** 表示运行、原生接口或源码身份校验失败。两个证据不支持的性质单独列出。
+调用者可检查兼容的当前或未来提交，原有历史版本复现实验仍可使用。
+详见[安装与维护者 CI 接入说明](docs/maintainer-gate.md)。外部维护者采用情况仍未验证。
+
 ## 已验证的正反对照
 
 对 OWASP 原版及其已有修复 PR #211 使用相同的 22 例：

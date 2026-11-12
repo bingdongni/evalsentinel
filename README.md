@@ -12,6 +12,30 @@ GPU or real tool action is needed. [简体中文](README.zh-CN.md)
 **Try without a local install:** [run the native demo in your fork](docs/try-it.md)
 and [share a short trial report](https://github.com/bingdongni/evalsentinel/issues/new?template=trial-feedback.yml).
 
+## Check your own evaluator commit in CI (v0.2 alpha)
+
+An OWASP assertion maintainer can select a clean PR commit and the explicit
+single-use approval policy, then block a regression before merging:
+
+```sh
+evalsentinel check owasp --checkout /path/to/harness --expected-commit FULL_40_HEX_SHA --contract single-use-approval-v1 --output-dir /path/to/new-report
+```
+
+Exit **0** means agreement on 18 semantic controls and two executable guards;
+**1** means a contract violation; **2** means an execution, compatibility or
+source-verification error. Two unsupported evidence properties remain outside
+the semantic denominator. The original native verdicts stay in the JSON report.
+
+[Install and add the maintainer CI gate](docs/maintainer-gate.md). This works with
+a caller-selected compatible commit, including future PRs, rather than requiring
+one of our historical source pins. The supported native API and finite policy
+are explicit; adoption by external maintainers remains unverified.
+
+The gate is exercised against new native commits that deliberately overaccept,
+overreject or crash. A controlled stale-bytecode experiment also checks that
+current source changes cannot be hidden by old cached code. These are liveness
+checks of the gate, not additional independent corpus cases or upstream defects.
+
 ## A real before/after control
 
 The OWASP integration compares an unchanged native baseline with the proposed

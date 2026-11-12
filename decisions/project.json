@@ -2,7 +2,7 @@
   "name": "EvalSentinel",
   "selected_on": "2026-11-12",
   "decision": "selected",
-  "implementation_status": "v0.1.0 implementation: two native adapters and 30 named regression controls",
+  "implementation_status": "v0.2 alpha: caller-selected OWASP commit policy gate, native source integrity and real CI fault controls",
   "positioning_zh": "\u6709\u72b6\u6001\u667a\u80fd\u4f53\u8bc4\u6d4b\u5668\u7684\u79bb\u7ebf\u53cd\u4f8b\u6d4b\u8bd5\u5de5\u5177",
   "repository_directory": "D:/PR/evalsentinel",
   "public_repository_created": true,
@@ -121,6 +121,25 @@
     "baseline_false_accepts": 6,
     "candidate_false_accepts": 0
   },
-  "next_delivery": "External user feedback and further independently sourced regression families",
-  "public_repository_url": "https://github.com/bingdongni/evalsentinel"
+  "next_delivery": "Validate usefulness and compatibility in a real maintainer CI workflow; no wider contract or adoption claim",
+  "public_repository_url": "https://github.com/bingdongni/evalsentinel",
+  "maintainer_gate": {
+    "version": "0.2.0a1",
+    "contract": "single-use-approval-v1",
+    "semantic_controls": 18,
+    "guards": 2,
+    "unsupported": 2,
+    "arbitrary_compatible_commit": true,
+    "native_cli_exit_controls": [
+      0,
+      1,
+      1,
+      2,
+      2,
+      2,
+      0
+    ],
+    "model_api_calls": 0,
+    "adoption": "unverified"
+  }
 }

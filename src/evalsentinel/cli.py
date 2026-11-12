@@ -7,7 +7,7 @@ from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 
-from evalsentinel import __version__, owasp, suite
+from evalsentinel import __version__, gate, owasp, suite
 from evalsentinel.catalog import CONTROLS, VERSIONS
 from evalsentinel.mcp import audit
 from evalsentinel.owasp_catalog import REVISIONS, corpus
@@ -57,12 +57,46 @@ def _execute(args: argparse.Namespace, output: Path) -> dict:
     )
 
 
+def _check(args: argparse.Namespace, output: Path) -> int:
+    try:
+        report = gate.check(
+            args.checkout.resolve(),
+            output.resolve(),
+            args.expected_commit,
+            contract=args.contract,
+            timeout=args.timeout_seconds,
+        )
+    except (OSError, ValueError) as error:
+        print(
+            json.dumps({"error": {"code": "INVALID_ENVIRONMENT", "message": str(error)}}),
+            file=sys.stderr,
+        )
+        return 2
+    if args.format == "json":
+        print(
+            json.dumps(
+                {"report": str(output.resolve() / "report.json"), **report["gate"]}, indent=2
+            )
+        )
+    else:
+        print(gate.console_summary(report, output))
+    return report["gate"]["exit_code"]
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="evalsentinel", description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
     commands = parser.add_subparsers(dest="command", required=True)
     cases = commands.add_parser("cases", help="List the 30 declared controls as JSON")
     cases.add_argument("--adapter", choices=["all", "mcp", "owasp"], default="all")
+    check = commands.add_parser("check", help="Gate a maintainer-selected native commit")
+    check.add_argument("adapter", choices=["owasp"])
+    check.add_argument("--checkout", type=Path, required=True)
+    check.add_argument("--expected-commit", required=True, help="Full 40-hex target Git commit")
+    check.add_argument("--contract", choices=[gate.CONTRACT], required=True)
+    check.add_argument("--output-dir", type=Path)
+    check.add_argument("--timeout-seconds", type=float, default=25)
+    check.add_argument("--format", choices=["text", "json"], default="text")
     run = commands.add_parser("audit", help="Run declared controls through a native evaluator")
     run.add_argument("adapter", choices=["mcp", "owasp", "all"])
     run.add_argument("--checkout", type=Path, help="Pinned, clean native checkout")
@@ -81,6 +115,8 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(inventory(args.adapter), indent=2))
         return 0
     output = args.output_dir or Path("runs") / datetime.now(UTC).strftime("%Y%m%dT%H%M%S%fZ")
+    if args.command == "check":
+        return _check(args, output)
     try:
         report = _execute(args, output)
     except (OSError, ValueError) as error:

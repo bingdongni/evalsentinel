@@ -1,7 +1,8 @@
 # First runnable slice: MCP pagination
 
-This implements the first delivery selected in project decision 001. Approval
-integration and the full 30-case v0.1 corpus remain later deliveries.
+This describes the MCP adapter introduced in the first delivery. The approval
+adapter and full 30-control catalogue are documented in the [v0.1 contract](v0.1-contract.md).
+The additional [maintainer gate](maintainer-gate.md) checks a caller-selected OWASP commit.
 
 The native pagination fixture follows the proposal in
 [conformance #577](https://github.com/modelcontextprotocol/conformance/issues/577),
